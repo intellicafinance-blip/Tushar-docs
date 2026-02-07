@@ -1,408 +1,634 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LoanAI - Smart Loan Comparison | CGTMSE, Home Loan, LAP</title>
-  <meta name="description" content="AI-powered loan comparison tool for CGTMSE, Home Loan, and Loan Against Property from PSU and Private banks in India">
+  <title>Intellica Financial Services Pvt Ltd | Home Loan, LAP, CGTMSE, Business & Personal Loans</title>
+  <meta name="description" content="Intellica Financial Services Pvt Ltd - Your trusted partner for Home Loans, Loan Against Property, CGTMSE Loans, Business Loans, and Personal Loans. Get the best rates and quick approvals.">
+  <meta name="keywords" content="home loan, LAP, loan against property, CGTMSE loan, business loan, personal loan, financial services, Intellica">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <div class="logo-icon">$</div>
-        <span>Loan<span style="color: #34d399">AI</span></span>
-      </div>
+  <!-- Header / Navigation -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <div class="logo-mark">IF</div>
+        <div class="logo-text">
+          <span class="logo-name">Intellica</span>
+          <span class="logo-tagline">Financial Services</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#emi-calculator" class="nav-link">EMI Calculator</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
       <div class="header-actions">
-        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
+        <a href="#contact" class="btn btn-accent btn-sm">Get Free Consultation</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>AI-Powered <span>Loan Comparison</span></h1>
-    <p>Compare CGTMSE, Home Loans & LAP across PSU and Private banks. Get AI-driven recommendations tailored to your profile.</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="number">10</div>
-        <div class="label">Banks</div>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">Trusted by 1000+ Happy Customers</div>
+        <h1>Your Financial Goals,<br><span>Our Expertise.</span></h1>
+        <p>Intellica Financial Services Pvt Ltd helps you secure the best loan deals with competitive interest rates, quick approvals, and personalized guidance for Home Loans, LAP, CGTMSE, Business & Personal Loans.</p>
+        <div class="hero-cta">
+          <a href="#services" class="btn btn-primary btn-lg">Explore Our Services</a>
+          <a href="#emi-calculator" class="btn btn-outline-light btn-lg">Calculate EMI</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <div class="trust-number">15+</div>
+            <div class="trust-label">Bank Partners</div>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <div class="trust-number">500 Cr+</div>
+            <div class="trust-label">Loans Disbursed</div>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <div class="trust-number">98%</div>
+            <div class="trust-label">Approval Rate</div>
+          </div>
+        </div>
       </div>
-      <div class="hero-stat">
-        <div class="number">3</div>
-        <div class="label">Loan Types</div>
-      </div>
-      <div class="hero-stat">
-        <div class="number">30+</div>
-        <div class="label">Products</div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M6 21V11M18 21V11M12 21V11M3 7l9-4 9 4"/>
+            </svg>
+          </div>
+          <div class="hero-card-title">Quick Loan Approval</div>
+          <div class="hero-card-desc">Get approval within 48 hours with minimal documentation</div>
+          <div class="hero-card-rate">
+            <span class="rate-label">Rates starting from</span>
+            <span class="rate-value">8.35%</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Navigation Tabs -->
-  <nav class="nav-tabs">
-    <button class="nav-tab active" onclick="switchTab('compare')" data-tab="compare">
-      <span class="tab-icon">📊</span> Compare Loans
-    </button>
-    <button class="nav-tab" onclick="switchTab('calculator')" data-tab="calculator">
-      <span class="tab-icon">🧮</span> EMI Calculator
-    </button>
-    <button class="nav-tab" onclick="switchTab('eligibility')" data-tab="eligibility">
-      <span class="tab-icon">✅</span> Eligibility Check
-    </button>
-    <button class="nav-tab" onclick="switchTab('comparison-table')" data-tab="comparison-table">
-      <span class="tab-icon">📋</span> Side-by-Side
-    </button>
-  </nav>
-
-  <!-- Toast Container -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <div class="container">
-
-    <!-- ============================================ -->
-    <!-- SECTION: Compare Loans (AI Recommendations)  -->
-    <!-- ============================================ -->
-    <div class="section-panel active" id="panel-compare">
-
-      <div class="form-card fade-in">
-        <h2>🎯 Tell Us About Your Loan Requirement</h2>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Loan Type</label>
-            <select id="loanType" onchange="onLoanTypeChange()">
-              <option value="home_loan">🏠 Home Loan</option>
-              <option value="lap">🏢 Loan Against Property (LAP)</option>
-              <option value="cgtmse">🏭 CGTMSE Loan</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Loan Amount (₹)</label>
-            <input type="number" id="loanAmount" value="5000000" min="100000" max="100000000" placeholder="e.g. 5000000">
-            <span class="input-hint" id="amountHint">₹50.00 L</span>
-          </div>
-          <div class="form-group">
-            <label>Tenure (Years)</label>
-            <input type="number" id="loanTenure" value="20" min="1" max="30" placeholder="e.g. 20">
-          </div>
-          <div class="form-group">
-            <label>Your Age</label>
-            <input type="number" id="userAge" value="30" min="18" max="70" placeholder="e.g. 30">
-          </div>
-          <div class="form-group">
-            <label>Monthly Income (₹)</label>
-            <input type="number" id="userIncome" value="75000" min="10000" placeholder="e.g. 75000">
-          </div>
-          <div class="form-group">
-            <label>Employment Type</label>
-            <select id="employmentType">
-              <option value="salaried">Salaried</option>
-              <option value="self-employed">Self Employed</option>
-              <option value="business-owner">Business Owner</option>
-              <option value="professional">Professional</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>CIBIL Score</label>
-            <input type="number" id="cibilScore" value="750" min="300" max="900" placeholder="e.g. 750">
-          </div>
-          <div class="form-group" id="businessAgeGroup" style="display:none">
-            <label>Business Vintage (Years)</label>
-            <input type="number" id="businessAge" value="5" min="0" max="50" placeholder="e.g. 5">
-          </div>
-        </div>
-        <div class="form-actions">
-          <button class="btn btn-primary" onclick="findLoans()">
-            🔍 Find Best Loans
-          </button>
-          <button class="btn btn-outline" onclick="resetForm()">
-            ↻ Reset
-          </button>
-        </div>
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Services</span>
+        <h2>Comprehensive Loan Solutions<br>for Every Need</h2>
+        <p>We offer a wide range of loan products tailored to meet your personal and business financial requirements.</p>
       </div>
 
-      <!-- AI Insights -->
-      <div class="insights-panel hidden" id="insightsPanel">
-        <h3>🤖 AI Insights</h3>
-        <div class="insight-cards" id="insightCards"></div>
-      </div>
-
-      <!-- Filter & Results -->
-      <div id="resultsSection" class="hidden">
-        <div class="results-header">
-          <div>
-            <h2>Loan Recommendations</h2>
-            <span class="results-count" id="resultsCount"></span>
+      <div class="services-grid">
+        <!-- Home Loan -->
+        <div class="service-card" data-service="home-loan">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
+              <path d="M9 21V12h6v9"/>
+            </svg>
           </div>
-          <div class="filter-pills">
-            <button class="filter-pill active" onclick="filterResults('all')">All Banks</button>
-            <button class="filter-pill" onclick="filterResults('PSU')">PSU Banks</button>
-            <button class="filter-pill" onclick="filterResults('Private')">Private Banks</button>
-          </div>
+          <h3>Home Loan</h3>
+          <p>Make your dream home a reality with our competitive home loan offerings from leading banks. Low interest rates, flexible tenure, and hassle-free processing.</p>
+          <ul class="service-highlights">
+            <li>Interest rates from <strong>8.35% p.a.</strong></li>
+            <li>Tenure up to <strong>30 years</strong></li>
+            <li>Loan up to <strong>90% of property value</strong></li>
+            <li>Special rates for women borrowers</li>
+          </ul>
+          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
         </div>
-        <div class="loan-cards" id="loanCards"></div>
+
+        <!-- Loan Against Property -->
+        <div class="service-card" data-service="lap">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+          <h3>Loan Against Property</h3>
+          <p>Unlock the value of your property to fund your business expansion, education, wedding, or any other financial need with attractive LAP options.</p>
+          <ul class="service-highlights">
+            <li>Interest rates from <strong>9.10% p.a.</strong></li>
+            <li>Up to <strong>65% of property value</strong></li>
+            <li>Residential & commercial property accepted</li>
+            <li>Overdraft facility available</li>
+          </ul>
+          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+        </div>
+
+        <!-- CGTMSE Loan -->
+        <div class="service-card" data-service="cgtmse">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>CGTMSE Loan</h3>
+          <p>Collateral-free loans for MSMEs backed by the Credit Guarantee Fund Trust. Grow your business without pledging assets.</p>
+          <ul class="service-highlights">
+            <li><strong>No collateral required</strong> up to Rs. 5 Cr</li>
+            <li>Government-backed guarantee</li>
+            <li>For manufacturing, services & trading</li>
+            <li>Support for micro & small enterprises</li>
+          </ul>
+          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+        </div>
+
+        <!-- Business Loan -->
+        <div class="service-card" data-service="business-loan">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 7a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7z"/>
+              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+          </div>
+          <h3>Business Loan</h3>
+          <p>Fuel your business growth with our quick and flexible business loan solutions. Whether you need working capital or expansion funds, we have you covered.</p>
+          <ul class="service-highlights">
+            <li>Loans from <strong>Rs. 5 Lakh to Rs. 50 Cr</strong></li>
+            <li>Quick disbursement within <strong>72 hours</strong></li>
+            <li>Minimal documentation required</li>
+            <li>Flexible repayment options</li>
+          </ul>
+          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+        </div>
+
+        <!-- Personal Loan -->
+        <div class="service-card" data-service="personal-loan">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Personal Loan</h3>
+          <p>Get instant personal loans for weddings, travel, medical emergencies, or any personal expense. No collateral needed with quick approvals.</p>
+          <ul class="service-highlights">
+            <li>Interest rates from <strong>10.49% p.a.</strong></li>
+            <li><strong>No collateral</strong> required</li>
+            <li>Instant approval for salaried professionals</li>
+            <li>Flexible tenure from <strong>1 to 7 years</strong></li>
+          </ul>
+          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- ============================================ -->
-    <!-- SECTION: EMI Calculator                      -->
-    <!-- ============================================ -->
-    <div class="section-panel" id="panel-calculator">
-      <div class="form-card fade-in">
-        <h2>🧮 EMI Calculator</h2>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Loan Amount (₹)</label>
-            <input type="range" id="calcAmount" min="100000" max="100000000" step="100000" value="5000000" oninput="updateCalculator()">
-            <div class="range-value" id="calcAmountDisplay">₹50.00 L</div>
-            <div class="range-labels">
-              <span>₹1 L</span>
-              <span>₹10 Cr</span>
+  <!-- Why Choose Us -->
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why Intellica</span>
+        <h2>Why Thousands Trust Us<br>With Their Financial Needs</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h4>Quick Processing</h4>
+          <p>Get your loan approved within 48-72 hours with our streamlined digital process.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h4>100% Secure</h4>
+          <p>Your data is protected with bank-grade security. We follow strict privacy policies.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+            </svg>
+          </div>
+          <h4>Best Interest Rates</h4>
+          <p>We partner with 15+ banks to get you the most competitive interest rates available.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h4>Dedicated Support</h4>
+          <p>A personal relationship manager guides you through every step of the loan journey.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <h4>Minimal Documentation</h4>
+          <p>Simplified paperwork with digital document upload. We handle the rest for you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <h4>Multiple Bank Options</h4>
+          <p>Compare loan offers from PSU and private banks. Choose the best fit for your needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-tag">About Us</span>
+          <h2>Intellica Financial Services Pvt Ltd</h2>
+          <p class="about-lead">We are a leading financial services company dedicated to helping individuals and businesses achieve their financial goals through expert loan advisory and processing services.</p>
+          <p>With years of experience in the financial services industry, Intellica Financial Services has built strong relationships with major PSU and private banks across India. Our team of expert loan advisors works tirelessly to understand your unique financial needs and match you with the best loan products available in the market.</p>
+          <p>Whether you're buying your first home, expanding your business, or need funds for personal requirements, we ensure a seamless and transparent loan process from application to disbursement.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="stat-number">1000+</div>
+              <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="about-stat">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">Bank Partners</div>
+            </div>
+            <div class="about-stat">
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Years Experience</div>
             </div>
           </div>
-          <div class="form-group">
-            <label>Interest Rate (%)</label>
-            <input type="range" id="calcRate" min="7" max="18" step="0.1" value="8.5" oninput="updateCalculator()">
-            <div class="range-value" id="calcRateDisplay">8.5%</div>
-            <div class="range-labels">
+        </div>
+        <div class="about-visual">
+          <div class="about-card about-card-1">
+            <div class="about-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <span>Trusted Advisory</span>
+          </div>
+          <div class="about-card about-card-2">
+            <div class="about-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
+              </svg>
+            </div>
+            <span>Growing Every Day</span>
+          </div>
+          <div class="about-card about-card-3">
+            <div class="about-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <span>Secure & Reliable</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMI Calculator Section -->
+  <section class="emi-section" id="emi-calculator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">EMI Calculator</span>
+        <h2>Plan Your Loan Repayment</h2>
+        <p>Use our EMI calculator to estimate your monthly installments and plan your finances better.</p>
+      </div>
+
+      <div class="calculator-wrapper">
+        <div class="calculator-inputs">
+          <div class="calc-group">
+            <label for="calcLoanType">Loan Type</label>
+            <select id="calcLoanType" onchange="onCalcLoanTypeChange()">
+              <option value="home-loan">Home Loan</option>
+              <option value="lap">Loan Against Property</option>
+              <option value="cgtmse">CGTMSE Loan</option>
+              <option value="business-loan">Business Loan</option>
+              <option value="personal-loan">Personal Loan</option>
+            </select>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="calcAmount">Loan Amount</label>
+              <span class="calc-value-display" id="calcAmountValue">Rs. 50,00,000</span>
+            </div>
+            <input type="range" id="calcAmount" min="100000" max="100000000" step="50000" value="5000000" oninput="updateEMI()">
+            <div class="calc-range-labels">
+              <span>Rs. 1 Lakh</span>
+              <span>Rs. 10 Crore</span>
+            </div>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="calcRate">Interest Rate (% p.a.)</label>
+              <span class="calc-value-display" id="calcRateValue">8.50%</span>
+            </div>
+            <input type="range" id="calcRate" min="7" max="24" step="0.1" value="8.5" oninput="updateEMI()">
+            <div class="calc-range-labels">
               <span>7%</span>
-              <span>18%</span>
+              <span>24%</span>
             </div>
           </div>
-          <div class="form-group">
-            <label>Tenure (Years)</label>
-            <input type="range" id="calcTenure" min="1" max="30" step="1" value="20" oninput="updateCalculator()">
-            <div class="range-value" id="calcTenureDisplay">20 Years</div>
-            <div class="range-labels">
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="calcTenure">Loan Tenure</label>
+              <span class="calc-value-display" id="calcTenureValue">20 Years</span>
+            </div>
+            <input type="range" id="calcTenure" min="1" max="30" step="1" value="20" oninput="updateEMI()">
+            <div class="calc-range-labels">
               <span>1 Year</span>
               <span>30 Years</span>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="calculator-grid">
-        <div>
-          <div class="calc-result-card slide-up">
-            <div class="sub-label">Your Monthly EMI</div>
-            <div class="big-number" id="emiResult">₹43,391</div>
-            <div class="sub-label">per month</div>
+        <div class="calculator-results">
+          <div class="emi-result-card">
+            <div class="emi-label">Monthly EMI</div>
+            <div class="emi-amount" id="emiAmount">Rs. 43,391</div>
           </div>
-          <div class="emi-breakdown mt-2">
-            <div class="breakdown-item">
-              <div class="breakdown-value text-primary" id="breakdownPrincipal">₹50.00 L</div>
-              <div class="breakdown-label">Principal</div>
-            </div>
-            <div class="breakdown-item">
-              <div class="breakdown-value text-danger" id="breakdownInterest">₹54.14 L</div>
-              <div class="breakdown-label">Total Interest</div>
-            </div>
-            <div class="breakdown-item">
-              <div class="breakdown-value text-accent" id="breakdownTotal">₹1.04 Cr</div>
-              <div class="breakdown-label">Total Payment</div>
-            </div>
-          </div>
-        </div>
 
-        <div class="chart-container">
-          <h3 class="text-center mb-2">Payment Breakdown</h3>
-          <div class="donut-chart" id="donutChart">
-            <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="15"/>
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#1e3a5f" stroke-width="15"
-                id="principalArc" stroke-dasharray="120 252" stroke-linecap="round"/>
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#10b981" stroke-width="15"
-                id="interestArc" stroke-dasharray="132 252" stroke-dashoffset="-120" stroke-linecap="round"/>
-            </svg>
-            <div class="donut-center">
-              <div class="amount" id="donutTotal">₹1.04 Cr</div>
-              <div class="label">Total</div>
+          <div class="emi-chart-area">
+            <div class="donut-wrapper">
+              <svg viewBox="0 0 120 120" class="donut-svg">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#e8ecf1" stroke-width="16"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#1B4D7A" stroke-width="16"
+                  id="principalArc" stroke-dasharray="150 314.16" stroke-linecap="round" class="donut-arc"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#22C55E" stroke-width="16"
+                  id="interestArc" stroke-dasharray="164.16 314.16" stroke-dashoffset="-150" stroke-linecap="round" class="donut-arc"/>
+              </svg>
+              <div class="donut-center-text">
+                <span class="donut-total" id="donutTotal">Rs. 1.04 Cr</span>
+                <span class="donut-label">Total Payment</span>
+              </div>
+            </div>
+            <div class="chart-legend-row">
+              <div class="legend-entry">
+                <span class="legend-dot" style="background:#1B4D7A"></span>
+                <div>
+                  <div class="legend-title">Principal</div>
+                  <div class="legend-value" id="legendPrincipal">Rs. 50.00 L</div>
+                </div>
+              </div>
+              <div class="legend-entry">
+                <span class="legend-dot" style="background:#22C55E"></span>
+                <div>
+                  <div class="legend-title">Interest</div>
+                  <div class="legend-value" id="legendInterest">Rs. 54.14 L</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="chart-legend">
-            <div class="legend-item">
-              <div class="legend-dot" style="background: #1e3a5f"></div>
-              Principal
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background: #10b981"></div>
-              Interest
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Amortization Schedule -->
-      <div class="mt-3">
-        <div class="flex justify-between items-center mb-2">
-          <h3>Amortization Schedule (Yearly)</h3>
-          <button class="btn btn-sm btn-outline" onclick="toggleAmortization()">Show/Hide</button>
-        </div>
-        <div class="amort-table-container hidden" id="amortTable">
-          <table class="amort-table">
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>EMI (Monthly)</th>
-                <th>Principal</th>
-                <th>Interest</th>
-                <th>Balance</th>
-              </tr>
-            </thead>
-            <tbody id="amortBody"></tbody>
-          </table>
+          <a href="#contact" class="btn btn-primary btn-block">Apply For This Loan</a>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- ============================================ -->
-    <!-- SECTION: Eligibility Checker                 -->
-    <!-- ============================================ -->
-    <div class="section-panel" id="panel-eligibility">
-      <div class="form-card fade-in">
-        <h2>✅ Check Your Loan Eligibility</h2>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Select Bank</label>
-            <select id="eligBank" onchange="onEligBankChange()">
-              <optgroup label="PSU Banks">
-                <option value="sbi">State Bank of India</option>
-                <option value="bob">Bank of Baroda</option>
-                <option value="pnb">Punjab National Bank</option>
-                <option value="canara">Canara Bank</option>
-                <option value="union">Union Bank of India</option>
-              </optgroup>
-              <optgroup label="Private Banks">
-                <option value="hdfc">HDFC Bank</option>
-                <option value="icici">ICICI Bank</option>
-                <option value="axis">Axis Bank</option>
-                <option value="kotak">Kotak Mahindra Bank</option>
-                <option value="indusind">IndusInd Bank</option>
-              </optgroup>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Loan Type</label>
-            <select id="eligLoanType">
-              <option value="home_loan">🏠 Home Loan</option>
-              <option value="lap">🏢 Loan Against Property</option>
-              <option value="cgtmse">🏭 CGTMSE Loan</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Your Age</label>
-            <input type="number" id="eligAge" value="30" min="18" max="70">
-          </div>
-          <div class="form-group">
-            <label>Monthly Income (₹)</label>
-            <input type="number" id="eligIncome" value="75000" min="0">
-          </div>
-          <div class="form-group">
-            <label>CIBIL Score</label>
-            <input type="number" id="eligCibil" value="750" min="300" max="900">
-          </div>
-          <div class="form-group">
-            <label>Employment Type</label>
-            <select id="eligEmployment">
-              <option value="salaried">Salaried</option>
-              <option value="self-employed">Self Employed</option>
-              <option value="business-owner">Business Owner</option>
-              <option value="professional">Professional</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Business Age (Years)</label>
-            <input type="number" id="eligBusinessAge" value="5" min="0" max="50">
-          </div>
-        </div>
-        <div class="form-actions">
-          <button class="btn btn-accent" onclick="checkEligibility()">
-            ✅ Check Eligibility
-          </button>
-        </div>
+  <!-- Testimonials / Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">How It Works</span>
+        <h2>Simple 4-Step Loan Process</h2>
       </div>
-
-      <div id="eligibilityResults"></div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SECTION: Side-by-Side Comparison Table       -->
-    <!-- ============================================ -->
-    <div class="section-panel" id="panel-comparison-table">
-      <div class="form-card fade-in">
-        <h2>📋 Side-by-Side Comparison</h2>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Loan Type</label>
-            <select id="compareType" onchange="updateComparisonTable()">
-              <option value="home_loan">🏠 Home Loan</option>
-              <option value="lap">🏢 Loan Against Property</option>
-              <option value="cgtmse">🏭 CGTMSE Loan</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Bank Type</label>
-            <select id="compareBankType" onchange="updateComparisonTable()">
-              <option value="all">All Banks</option>
-              <option value="PSU">PSU Banks Only</option>
-              <option value="Private">Private Banks Only</option>
-            </select>
-          </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <h4>Share Your Requirement</h4>
+          <p>Tell us your loan requirement, amount, and preferred tenure. Our experts will listen.</p>
         </div>
-      </div>
-
-      <div class="compare-section">
-        <div class="compare-table-wrapper">
-          <table class="compare-table" id="compareTable">
-            <thead>
-              <tr>
-                <th>Bank</th>
-                <th>Type</th>
-                <th>Interest Rate</th>
-                <th>Processing Fee</th>
-                <th>Max Amount</th>
-                <th>Max Tenure</th>
-                <th>Prepayment</th>
-                <th>Min CIBIL</th>
-              </tr>
-            </thead>
-            <tbody id="compareBody"></tbody>
-          </table>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <h4>Get Best Offers</h4>
+          <p>We compare offers from 15+ banks and find the best deal matching your profile.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <h4>Submit Documents</h4>
+          <p>Minimal paperwork with digital upload. We guide you through every document needed.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">04</div>
+          <h4>Loan Disbursement</h4>
+          <p>Quick approval and disbursement. Your funds reach you within the shortest time possible.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Detail Modal -->
-  <div class="modal-overlay" id="detailModal">
-    <div class="modal">
-      <div class="modal-header">
-        <h2 id="modalTitle">Loan Details</h2>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2>Start Your Loan Journey Today</h2>
+        <p>Fill in the form below or reach out to us directly. Our team will get back to you within 24 hours.</p>
       </div>
-      <div id="modalContent"></div>
+
+      <div class="contact-grid">
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" required placeholder="Enter your full name">
+              </div>
+              <div class="form-field">
+                <label for="contactPhone">Phone Number *</label>
+                <input type="tel" id="contactPhone" required placeholder="Enter your phone number">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" placeholder="Enter your email">
+              </div>
+              <div class="form-field">
+                <label for="contactLoanType">Loan Type *</label>
+                <select id="contactLoanType" required>
+                  <option value="">Select Loan Type</option>
+                  <option value="home-loan">Home Loan</option>
+                  <option value="lap">Loan Against Property</option>
+                  <option value="cgtmse">CGTMSE Loan</option>
+                  <option value="business-loan">Business Loan</option>
+                  <option value="personal-loan">Personal Loan</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contactAmount">Loan Amount Required</label>
+                <input type="text" id="contactAmount" placeholder="e.g. 50,00,000">
+              </div>
+              <div class="form-field">
+                <label for="contactCity">City</label>
+                <input type="text" id="contactCity" placeholder="Enter your city">
+              </div>
+            </div>
+            <div class="form-field full-width">
+              <label for="contactMessage">Additional Message</label>
+              <textarea id="contactMessage" rows="3" placeholder="Any additional details about your loan requirement..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              Submit Enquiry
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-info-card">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Call Us</h4>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card whatsapp-card" onclick="openWhatsApp()">
+            <div class="contact-icon whatsapp-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>WhatsApp Us</h4>
+              <span>Chat with us instantly</span>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Email Us</h4>
+              <a href="mailto:info@intellicafinancial.com">info@intellicafinancial.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Visit Us</h4>
+              <span>Mumbai, Maharashtra, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>LoanAI - AI-Powered Loan Comparison Tool</p>
-    <p class="disclaimer">
-      Disclaimer: Interest rates and terms shown are indicative and subject to change.
-      Please verify current rates directly with the respective banks before making financial decisions.
-      This tool provides recommendations based on publicly available data and should not be considered as financial advice.
-    </p>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <div class="logo-mark">IF</div>
+            <div class="logo-text">
+              <span class="logo-name">Intellica</span>
+              <span class="logo-tagline">Financial Services</span>
+            </div>
+          </div>
+          <p>Your trusted partner for all loan needs. We connect you with the best financial products from leading banks in India.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Our Services</h4>
+          <a href="#services">Home Loan</a>
+          <a href="#services">Loan Against Property</a>
+          <a href="#services">CGTMSE Loan</a>
+          <a href="#services">Business Loan</a>
+          <a href="#services">Personal Loan</a>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#emi-calculator">EMI Calculator</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="tel:+919876543210">+91 98765 43210</a>
+          <a href="mailto:info@intellicafinancial.com">info@intellicafinancial.com</a>
+          <span>Mumbai, Maharashtra, India</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Intellica Financial Services Pvt Ltd. All rights reserved.</p>
+        <p class="disclaimer">Disclaimer: Interest rates and loan terms displayed are indicative and subject to change. Final rates depend on individual profile assessment and bank policies. Intellica Financial Services Pvt Ltd acts as a loan advisory and processing partner and does not directly lend money.</p>
+      </div>
+    </div>
   </footer>
 
+  <!-- WhatsApp Floating Button -->
+  <div class="whatsapp-float" onclick="openWhatsApp()" title="Chat with us on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Chat with us</span>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
   <!-- Scripts -->
-  <script src="data/banks.js"></script>
-  <script src="js/ai-engine.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
