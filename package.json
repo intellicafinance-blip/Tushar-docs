@@ -1,13 +1,13 @@
 {
-  "name": "ai-loan-comparison-app",
+  "name": "intellica-financial-services",
   "version": "1.0.0",
-  "description": "AI-powered loan comparison app for CGTMSE, Home Loan, and LAP from PSU & Private banks",
+  "description": "Intellica Financial Services Pvt Ltd - Website for Home Loan, LAP, CGTMSE, Business & Personal Loans",
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
     "test": "echo \"Tests passed\""
   },
-  "keywords": ["loan", "finance", "CGTMSE", "home-loan", "LAP", "EMI", "AI"],
-  "author": "Tushar",
+  "keywords": ["loan", "finance", "CGTMSE", "home-loan", "LAP", "business-loan", "personal-loan", "EMI", "financial-services"],
+  "author": "Intellica Financial Services Pvt Ltd",
   "license": "MIT"
 }
