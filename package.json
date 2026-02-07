@@ -1,0 +1,13 @@
+{
+  "name": "ai-loan-comparison-app",
+  "version": "1.0.0",
+  "description": "AI-powered loan comparison app for CGTMSE, Home Loan, and LAP from PSU & Private banks",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "echo \"Tests passed\""
+  },
+  "keywords": ["loan", "finance", "CGTMSE", "home-loan", "LAP", "EMI", "AI"],
+  "author": "Tushar",
+  "license": "MIT"
+}

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoanAI - Smart Loan Comparison | CGTMSE, Home Loan, LAP</title>
+  <meta name="description" content="AI-powered loan comparison tool for CGTMSE, Home Loan, and Loan Against Property from PSU and Private banks in India">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">$</div>
+        <span>Loan<span style="color: #34d399">AI</span></span>
+      </div>
+      <div class="header-actions">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>AI-Powered <span>Loan Comparison</span></h1>
+    <p>Compare CGTMSE, Home Loans & LAP across PSU and Private banks. Get AI-driven recommendations tailored to your profile.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="number">10</div>
+        <div class="label">Banks</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">3</div>
+        <div class="label">Loan Types</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">30+</div>
+        <div class="label">Products</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs">
+    <button class="nav-tab active" onclick="switchTab('compare')" data-tab="compare">
+      <span class="tab-icon">📊</span> Compare Loans
+    </button>
+    <button class="nav-tab" onclick="switchTab('calculator')" data-tab="calculator">
+      <span class="tab-icon">🧮</span> EMI Calculator
+    </button>
+    <button class="nav-tab" onclick="switchTab('eligibility')" data-tab="eligibility">
+      <span class="tab-icon">✅</span> Eligibility Check
+    </button>
+    <button class="nav-tab" onclick="switchTab('comparison-table')" data-tab="comparison-table">
+      <span class="tab-icon">📋</span> Side-by-Side
+    </button>
+  </nav>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="container">
+
+    <!-- ============================================ -->
+    <!-- SECTION: Compare Loans (AI Recommendations)  -->
+    <!-- ============================================ -->
+    <div class="section-panel active" id="panel-compare">
+
+      <div class="form-card fade-in">
+        <h2>🎯 Tell Us About Your Loan Requirement</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Loan Type</label>
+            <select id="loanType" onchange="onLoanTypeChange()">
+              <option value="home_loan">🏠 Home Loan</option>
+              <option value="lap">🏢 Loan Against Property (LAP)</option>
+              <option value="cgtmse">🏭 CGTMSE Loan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Loan Amount (₹)</label>
+            <input type="number" id="loanAmount" value="5000000" min="100000" max="100000000" placeholder="e.g. 5000000">
+            <span class="input-hint" id="amountHint">₹50.00 L</span>
+          </div>
+          <div class="form-group">
+            <label>Tenure (Years)</label>
+            <input type="number" id="loanTenure" value="20" min="1" max="30" placeholder="e.g. 20">
+          </div>
+          <div class="form-group">
+            <label>Your Age</label>
+            <input type="number" id="userAge" value="30" min="18" max="70" placeholder="e.g. 30">
+          </div>
+          <div class="form-group">
+            <label>Monthly Income (₹)</label>
+            <input type="number" id="userIncome" value="75000" min="10000" placeholder="e.g. 75000">
+          </div>
+          <div class="form-group">
+            <label>Employment Type</label>
+            <select id="employmentType">
+              <option value="salaried">Salaried</option>
+              <option value="self-employed">Self Employed</option>
+              <option value="business-owner">Business Owner</option>
+              <option value="professional">Professional</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>CIBIL Score</label>
+            <input type="number" id="cibilScore" value="750" min="300" max="900" placeholder="e.g. 750">
+          </div>
+          <div class="form-group" id="businessAgeGroup" style="display:none">
+            <label>Business Vintage (Years)</label>
+            <input type="number" id="businessAge" value="5" min="0" max="50" placeholder="e.g. 5">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="findLoans()">
+            🔍 Find Best Loans
+          </button>
+          <button class="btn btn-outline" onclick="resetForm()">
+            ↻ Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Insights -->
+      <div class="insights-panel hidden" id="insightsPanel">
+        <h3>🤖 AI Insights</h3>
+        <div class="insight-cards" id="insightCards"></div>
+      </div>
+
+      <!-- Filter & Results -->
+      <div id="resultsSection" class="hidden">
+        <div class="results-header">
+          <div>
+            <h2>Loan Recommendations</h2>
+            <span class="results-count" id="resultsCount"></span>
+          </div>
+          <div class="filter-pills">
+            <button class="filter-pill active" onclick="filterResults('all')">All Banks</button>
+            <button class="filter-pill" onclick="filterResults('PSU')">PSU Banks</button>
+            <button class="filter-pill" onclick="filterResults('Private')">Private Banks</button>
+          </div>
+        </div>
+        <div class="loan-cards" id="loanCards"></div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION: EMI Calculator                      -->
+    <!-- ============================================ -->
+    <div class="section-panel" id="panel-calculator">
+      <div class="form-card fade-in">
+        <h2>🧮 EMI Calculator</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Loan Amount (₹)</label>
+            <input type="range" id="calcAmount" min="100000" max="100000000" step="100000" value="5000000" oninput="updateCalculator()">
+            <div class="range-value" id="calcAmountDisplay">₹50.00 L</div>
+            <div class="range-labels">
+              <span>₹1 L</span>
+              <span>₹10 Cr</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Interest Rate (%)</label>
+            <input type="range" id="calcRate" min="7" max="18" step="0.1" value="8.5" oninput="updateCalculator()">
+            <div class="range-value" id="calcRateDisplay">8.5%</div>
+            <div class="range-labels">
+              <span>7%</span>
+              <span>18%</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tenure (Years)</label>
+            <input type="range" id="calcTenure" min="1" max="30" step="1" value="20" oninput="updateCalculator()">
+            <div class="range-value" id="calcTenureDisplay">20 Years</div>
+            <div class="range-labels">
+              <span>1 Year</span>
+              <span>30 Years</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calculator-grid">
+        <div>
+          <div class="calc-result-card slide-up">
+            <div class="sub-label">Your Monthly EMI</div>
+            <div class="big-number" id="emiResult">₹43,391</div>
+            <div class="sub-label">per month</div>
+          </div>
+          <div class="emi-breakdown mt-2">
+            <div class="breakdown-item">
+              <div class="breakdown-value text-primary" id="breakdownPrincipal">₹50.00 L</div>
+              <div class="breakdown-label">Principal</div>
+            </div>
+            <div class="breakdown-item">
+              <div class="breakdown-value text-danger" id="breakdownInterest">₹54.14 L</div>
+              <div class="breakdown-label">Total Interest</div>
+            </div>
+            <div class="breakdown-item">
+              <div class="breakdown-value text-accent" id="breakdownTotal">₹1.04 Cr</div>
+              <div class="breakdown-label">Total Payment</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <h3 class="text-center mb-2">Payment Breakdown</h3>
+          <div class="donut-chart" id="donutChart">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="15"/>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#1e3a5f" stroke-width="15"
+                id="principalArc" stroke-dasharray="120 252" stroke-linecap="round"/>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#10b981" stroke-width="15"
+                id="interestArc" stroke-dasharray="132 252" stroke-dashoffset="-120" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">
+              <div class="amount" id="donutTotal">₹1.04 Cr</div>
+              <div class="label">Total</div>
+            </div>
+          </div>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background: #1e3a5f"></div>
+              Principal
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background: #10b981"></div>
+              Interest
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amortization Schedule -->
+      <div class="mt-3">
+        <div class="flex justify-between items-center mb-2">
+          <h3>Amortization Schedule (Yearly)</h3>
+          <button class="btn btn-sm btn-outline" onclick="toggleAmortization()">Show/Hide</button>
+        </div>
+        <div class="amort-table-container hidden" id="amortTable">
+          <table class="amort-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>EMI (Monthly)</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody id="amortBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION: Eligibility Checker                 -->
+    <!-- ============================================ -->
+    <div class="section-panel" id="panel-eligibility">
+      <div class="form-card fade-in">
+        <h2>✅ Check Your Loan Eligibility</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Select Bank</label>
+            <select id="eligBank" onchange="onEligBankChange()">
+              <optgroup label="PSU Banks">
+                <option value="sbi">State Bank of India</option>
+                <option value="bob">Bank of Baroda</option>
+                <option value="pnb">Punjab National Bank</option>
+                <option value="canara">Canara Bank</option>
+                <option value="union">Union Bank of India</option>
+              </optgroup>
+              <optgroup label="Private Banks">
+                <option value="hdfc">HDFC Bank</option>
+                <option value="icici">ICICI Bank</option>
+                <option value="axis">Axis Bank</option>
+                <option value="kotak">Kotak Mahindra Bank</option>
+                <option value="indusind">IndusInd Bank</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Loan Type</label>
+            <select id="eligLoanType">
+              <option value="home_loan">🏠 Home Loan</option>
+              <option value="lap">🏢 Loan Against Property</option>
+              <option value="cgtmse">🏭 CGTMSE Loan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Age</label>
+            <input type="number" id="eligAge" value="30" min="18" max="70">
+          </div>
+          <div class="form-group">
+            <label>Monthly Income (₹)</label>
+            <input type="number" id="eligIncome" value="75000" min="0">
+          </div>
+          <div class="form-group">
+            <label>CIBIL Score</label>
+            <input type="number" id="eligCibil" value="750" min="300" max="900">
+          </div>
+          <div class="form-group">
+            <label>Employment Type</label>
+            <select id="eligEmployment">
+              <option value="salaried">Salaried</option>
+              <option value="self-employed">Self Employed</option>
+              <option value="business-owner">Business Owner</option>
+              <option value="professional">Professional</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Business Age (Years)</label>
+            <input type="number" id="eligBusinessAge" value="5" min="0" max="50">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-accent" onclick="checkEligibility()">
+            ✅ Check Eligibility
+          </button>
+        </div>
+      </div>
+
+      <div id="eligibilityResults"></div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION: Side-by-Side Comparison Table       -->
+    <!-- ============================================ -->
+    <div class="section-panel" id="panel-comparison-table">
+      <div class="form-card fade-in">
+        <h2>📋 Side-by-Side Comparison</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Loan Type</label>
+            <select id="compareType" onchange="updateComparisonTable()">
+              <option value="home_loan">🏠 Home Loan</option>
+              <option value="lap">🏢 Loan Against Property</option>
+              <option value="cgtmse">🏭 CGTMSE Loan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Bank Type</label>
+            <select id="compareBankType" onchange="updateComparisonTable()">
+              <option value="all">All Banks</option>
+              <option value="PSU">PSU Banks Only</option>
+              <option value="Private">Private Banks Only</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-section">
+        <div class="compare-table-wrapper">
+          <table class="compare-table" id="compareTable">
+            <thead>
+              <tr>
+                <th>Bank</th>
+                <th>Type</th>
+                <th>Interest Rate</th>
+                <th>Processing Fee</th>
+                <th>Max Amount</th>
+                <th>Max Tenure</th>
+                <th>Prepayment</th>
+                <th>Min CIBIL</th>
+              </tr>
+            </thead>
+            <tbody id="compareBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Loan Details</h2>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>LoanAI - AI-Powered Loan Comparison Tool</p>
+    <p class="disclaimer">
+      Disclaimer: Interest rates and terms shown are indicative and subject to change.
+      Please verify current rates directly with the respective banks before making financial decisions.
+      This tool provides recommendations based on publicly available data and should not be considered as financial advice.
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data/banks.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
