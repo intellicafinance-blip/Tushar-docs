@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intellica VCFO - AI-Powered Virtual CFO | Loan Eligibility & Financial Advisory</title>
+  <meta name="description" content="Intellica VCFO - AI-Powered Virtual CFO combining Banking Consultant, CA, and Credit Manager. Calculate loan eligibility, compare banks, check CGTMSE eligibility, and save on EMIs.">
+  <meta name="keywords" content="VCFO, virtual CFO, loan eligibility calculator, bank comparison, CGTMSE eligibility, EMI savings, financial advisory, Intellica">
+  <meta name="author" content="Intellica Financial Services Pvt Ltd">
+  <meta property="og:title" content="Intellica VCFO - AI-Powered Virtual CFO">
+  <meta property="og:description" content="Your Personal Banking Consultant + CA + Credit Manager. Calculate loan eligibility, compare banks, and get personalized financial advisory.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/products.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">IF</div>
+        <div class="logo-text">
+          <span class="logo-name">Intellica</span>
+          <span class="logo-tagline">Financial Services</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#services" class="nav-link">Services</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle">Products <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="nav-dropdown-menu">
+            <a href="../products/home-loan.html">Home Loan</a>
+            <a href="../products/lap.html">LAP</a>
+            <a href="../products/cgtmse.html">CGTMSE</a>
+            <a href="../products/business-loan.html">Business Loan</a>
+            <a href="../products/working-capital.html">Working Capital</a>
+            <a href="../products/balance-transfer.html">Balance Transfer</a>
+          </div>
+        </div>
+        <a href="vcfo-advisor.html" class="nav-link active">VCFO Advisor</a>
+        <a href="../index.html#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="btn btn-accent btn-sm">Get Free Consultation</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- VCFO Hero Section -->
+  <section class="vcfo-hero" id="vcfo-hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="container">
+      <h1>Intellica <span class="highlight">VCFO</span></h1>
+      <p>AI-Powered Virtual CFO - Your Personal Banking Consultant + CA + Credit Manager</p>
+      <div class="vcfo-tools-nav">
+        <a href="#eligibility-engine" class="vcfo-tool-btn active">Loan Eligibility Engine</a>
+        <a href="#savings-calculator" class="vcfo-tool-btn">Savings Calculator</a>
+        <a href="#bank-comparison" class="vcfo-tool-btn">Bank Comparison</a>
+        <a href="#cgtmse-checker" class="vcfo-tool-btn">CGTMSE Checker</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Section 1: Loan Eligibility Engine -->
+  <section class="vcfo-tool-section" id="eligibility-engine">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tool 1</span>
+        <h2>Loan Eligibility Engine</h2>
+        <p>Get an instant estimate of your loan eligibility based on your financial profile.</p>
+      </div>
+      <div class="tool-card">
+        <div class="eligibility-calc-grid">
+          <!-- Input Form -->
+          <div class="calc-inputs-col">
+            <div class="calc-input-group">
+              <label for="eligLoanType">Loan Type</label>
+              <select id="eligLoanType">
+                <option value="home-loan">Home Loan</option>
+                <option value="lap">Loan Against Property (LAP)</option>
+                <option value="business-loan">Business Loan</option>
+                <option value="personal-loan">Personal Loan</option>
+                <option value="working-capital">Working Capital</option>
+              </select>
+            </div>
+
+            <div class="calc-input-group">
+              <label for="eligTurnover">Annual Turnover (Rs.)</label>
+              <input type="number" id="eligTurnover" placeholder="e.g. 50,00,000">
+              <span class="input-hint">Enter annual gross turnover</span>
+            </div>
+
+            <div class="calc-input-group">
+              <label for="eligIncome">Monthly Income / Net Profit (Rs.)</label>
+              <input type="number" id="eligIncome" placeholder="e.g. 1,00,000">
+            </div>
+
+            <div class="calc-input-group">
+              <label for="eligExistingEMI">Existing EMIs (Rs.)</label>
+              <input type="number" id="eligExistingEMI" value="0" placeholder="Total existing EMI obligations">
+            </div>
+
+            <div class="calc-input-group">
+              <label for="eligCIBIL">CIBIL Score</label>
+              <select id="eligCIBIL">
+                <option value="750+">750+</option>
+                <option value="700-749">700 - 749</option>
+                <option value="650-699">650 - 699</option>
+                <option value="below-650">Below 650</option>
+              </select>
+            </div>
+
+            <div class="calc-input-group">
+              <label for="eligPropertyValue">Property Value (Rs.)</label>
+              <input type="number" id="eligPropertyValue" placeholder="Enter if applicable">
+              <span class="input-hint">Required for Home Loan and LAP</span>
+            </div>
+
+            <div class="calc-input-group">
+              <label for="eligVintage">Business Vintage (Years)</label>
+              <input type="number" id="eligVintage" placeholder="e.g. 5">
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="calculateEligibility()">Calculate Eligibility</button>
+          </div>
+
+          <!-- Results Panel -->
+          <div class="results-panel">
+            <h3>Your Eligibility Report</h3>
+            <div class="result-item highlight-result">
+              <span class="result-label">Estimated Loan Amount</span>
+              <span class="result-value" id="eligLoanAmount">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Estimated EMI</span>
+              <span class="result-value" id="eligEMI">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">FOIR Ratio</span>
+              <span class="result-value" id="eligFOIR">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Recommended Tenure</span>
+              <span class="result-value" id="eligTenure">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Approval Probability</span>
+              <span class="result-value" id="eligApproval">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Best Product Match</span>
+              <span class="result-value" id="eligProduct">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Section 2: Smart Savings Calculator -->
+  <section class="vcfo-tool-section" id="savings-calculator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tool 2</span>
+        <h2>Smart Savings Calculator</h2>
+        <p>See how much you can save by refinancing your existing loan at a lower interest rate.</p>
+      </div>
+      <div class="tool-card">
+        <div class="savings-calc-grid">
+          <!-- Input Form -->
+          <div class="calc-inputs-col">
+            <div class="calc-input-group">
+              <label for="savOutstanding">Current Loan Outstanding (Rs.)</label>
+              <input type="number" id="savOutstanding" placeholder="e.g. 25,00,000">
+            </div>
+
+            <div class="calc-input-group">
+              <label for="savCurrentRate">Current Interest Rate (% p.a.)</label>
+              <input type="number" id="savCurrentRate" step="0.01" placeholder="e.g. 10.50">
+            </div>
+
+            <div class="calc-input-group">
+              <label for="savTenure">Remaining Tenure (Years)</label>
+              <input type="number" id="savTenure" placeholder="e.g. 15">
+            </div>
+
+            <div class="calc-input-group">
+              <label for="savNewRate">Proposed New Interest Rate (% p.a.)</label>
+              <input type="number" id="savNewRate" step="0.01" placeholder="e.g. 8.50">
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="calculateSavings()">Calculate Savings</button>
+          </div>
+
+          <!-- Results -->
+          <div class="savings-results-col">
+            <div class="savings-result-card">
+              <div class="savings-label">Current EMI</div>
+              <div class="savings-value" id="savCurrentEMI">--</div>
+            </div>
+
+            <div class="savings-result-card">
+              <div class="savings-label">New EMI</div>
+              <div class="savings-value" id="savNewEMI">--</div>
+            </div>
+
+            <div class="savings-result-card">
+              <div class="savings-label">Monthly Savings</div>
+              <div class="savings-value green" id="savMonthlySaving">--</div>
+            </div>
+
+            <div class="savings-result-card">
+              <div class="savings-label">Annual Savings</div>
+              <div class="savings-value gold" id="savAnnualSaving">--</div>
+            </div>
+
+            <div class="savings-highlight">
+              <div class="highlight-label">Total Savings Over Remaining Tenure</div>
+              <div class="highlight-value" id="savTotalSaving">--</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Section 3: Bank Comparison Tool -->
+  <section class="vcfo-tool-section" id="bank-comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tool 3</span>
+        <h2>Bank Comparison Tool</h2>
+        <p>Compare interest rates and features across leading PSU and Private banks.</p>
+      </div>
+      <div class="tool-card">
+        <div class="bank-filter-row">
+          <button class="bank-filter-btn active" onclick="filterBanks('all')">All Banks</button>
+          <button class="bank-filter-btn" onclick="filterBanks('psu')">PSU Banks</button>
+          <button class="bank-filter-btn" onclick="filterBanks('private')">Private Banks</button>
+          <button class="bank-filter-btn" onclick="filterBanks('home')">Best for Home Loan</button>
+          <button class="bank-filter-btn" onclick="filterBanks('business')">Best for Business</button>
+        </div>
+
+        <div class="bank-card-grid">
+          <!-- SBI -->
+          <div class="bank-card recommended" data-type="psu" data-best="home">
+            <div class="bank-card-header">
+              <span class="bank-card-name">SBI</span>
+              <span class="bank-tag psu">PSU</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.50% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.10% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">10.50% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.35%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">30 yrs</span>
+            </div>
+          </div>
+
+          <!-- Bank of Baroda -->
+          <div class="bank-card" data-type="psu">
+            <div class="bank-card-header">
+              <span class="bank-card-name">Bank of Baroda</span>
+              <span class="bank-tag psu">PSU</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.40% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.25% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">10.75% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.50%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">30 yrs</span>
+            </div>
+          </div>
+
+          <!-- HDFC Bank -->
+          <div class="bank-card" data-type="private" data-best="business">
+            <div class="bank-card-header">
+              <span class="bank-card-name">HDFC Bank</span>
+              <span class="bank-tag private">Private</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.75% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.50% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">11.00% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.50%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">30 yrs</span>
+            </div>
+          </div>
+
+          <!-- ICICI Bank -->
+          <div class="bank-card" data-type="private">
+            <div class="bank-card-header">
+              <span class="bank-card-name">ICICI Bank</span>
+              <span class="bank-tag private">Private</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.75% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.40% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">11.25% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.50%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">30 yrs</span>
+            </div>
+          </div>
+
+          <!-- Indian Bank -->
+          <div class="bank-card" data-type="psu">
+            <div class="bank-card-header">
+              <span class="bank-card-name">Indian Bank</span>
+              <span class="bank-tag psu">PSU</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.40% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.00% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">10.25% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.25%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">30 yrs</span>
+            </div>
+          </div>
+
+          <!-- Kotak Mahindra -->
+          <div class="bank-card" data-type="private">
+            <div class="bank-card-header">
+              <span class="bank-card-name">Kotak Mahindra</span>
+              <span class="bank-tag private">Private</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.85% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.75% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">11.50% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.50%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">25 yrs</span>
+            </div>
+          </div>
+
+          <!-- Bank of Maharashtra -->
+          <div class="bank-card" data-type="psu">
+            <div class="bank-card-header">
+              <span class="bank-card-name">Bank of Maharashtra</span>
+              <span class="bank-tag psu">PSU</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.35% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.10% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">10.50% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.25%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">30 yrs</span>
+            </div>
+          </div>
+
+          <!-- IDFC First -->
+          <div class="bank-card" data-type="private">
+            <div class="bank-card-header">
+              <span class="bank-card-name">IDFC First Bank</span>
+              <span class="bank-tag private">Private</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Home Loan</span>
+              <span class="detail-value">8.85% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>LAP</span>
+              <span class="detail-value">9.50% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Business Loan</span>
+              <span class="detail-value">11.00% p.a.</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Processing Fee</span>
+              <span class="detail-value">0.50%</span>
+            </div>
+            <div class="bank-card-detail">
+              <span>Max Tenure</span>
+              <span class="detail-value">30 yrs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Section 4: CGTMSE Eligibility Checker -->
+  <section class="vcfo-tool-section" id="cgtmse-checker">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tool 4</span>
+        <h2>CGTMSE Eligibility Checker</h2>
+        <p>Check if your MSME business qualifies for collateral-free CGTMSE loan guarantee.</p>
+      </div>
+      <div class="tool-card">
+        <div class="cgtmse-checker">
+          <div class="calc-input-group">
+            <label for="cgtEnterpriseType">Enterprise Type</label>
+            <select id="cgtEnterpriseType">
+              <option value="micro-manufacturing">Micro Manufacturing</option>
+              <option value="small-manufacturing">Small Manufacturing</option>
+              <option value="micro-services">Micro Services</option>
+              <option value="small-services">Small Services</option>
+            </select>
+          </div>
+
+          <div class="calc-input-group">
+            <label for="cgtLoanAmount">Loan Amount Required (Rs.)</label>
+            <input type="number" id="cgtLoanAmount" placeholder="e.g. 50,00,000">
+          </div>
+
+          <div class="calc-input-group">
+            <label for="cgtVintage">Business Vintage (Years)</label>
+            <input type="number" id="cgtVintage" placeholder="e.g. 3">
+          </div>
+
+          <div class="calc-input-group">
+            <label for="cgtTurnover">Annual Turnover (Rs.)</label>
+            <input type="number" id="cgtTurnover" placeholder="e.g. 1,00,00,000">
+          </div>
+
+          <div class="calc-input-group">
+            <label for="cgtUdyam">Is Udyam Registered?</label>
+            <select id="cgtUdyam">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary btn-lg" onclick="checkCGTMSE()">Check CGTMSE Eligibility</button>
+
+          <div class="cgtmse-result" id="cgtmseResult">
+            <h3>CGTMSE Eligibility Report</h3>
+            <div class="result-row">
+              <span class="row-label">Eligibility Status</span>
+              <span class="row-value" id="cgtEligible">--</span>
+            </div>
+            <div class="result-row">
+              <span class="row-label">Guarantee Cover %</span>
+              <span class="row-value" id="cgtCoverPercent">--</span>
+            </div>
+            <div class="result-row">
+              <span class="row-label">Guarantee Amount</span>
+              <span class="row-value" id="cgtGuaranteeAmt">--</span>
+            </div>
+            <div class="result-row">
+              <span class="row-label">Guarantee Fee</span>
+              <span class="row-value" id="cgtFee">--</span>
+            </div>
+            <div class="result-row">
+              <span class="row-label">Recommended Bank</span>
+              <span class="row-value" id="cgtBank">--</span>
+            </div>
+            <div class="result-row">
+              <span class="row-label">Max Loan Possible</span>
+              <span class="row-value" id="cgtMaxLoan">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financial Ratios Reference Section -->
+  <section class="vcfo-tool-section" id="financial-ratios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Knowledge Base</span>
+        <h2>Key Financial Ratios Analyzed by VCFO</h2>
+        <p>Understanding these ratios helps you prepare a stronger loan application and improve approval chances.</p>
+      </div>
+      <div class="tool-card">
+        <div class="ratios-grid">
+          <div class="ratio-card">
+            <div class="ratio-header">
+              <h4>FOIR</h4>
+              <span class="ratio-badge">Fixed Obligation to Income Ratio</span>
+            </div>
+            <p>Measures the percentage of your income going towards fixed obligations like EMIs, rent, and insurance premiums. Banks typically prefer FOIR to be <strong>below 50-60%</strong>. A lower FOIR indicates better repayment capacity and improves your loan eligibility.</p>
+          </div>
+
+          <div class="ratio-card">
+            <div class="ratio-header">
+              <h4>DSCR</h4>
+              <span class="ratio-badge">Debt Service Coverage Ratio</span>
+            </div>
+            <p>Indicates the ability of a business to service its debt from net operating income. A DSCR of <strong>greater than 1.5</strong> is considered healthy by most banks. It means the business generates 1.5 times more income than required to cover its debt obligations.</p>
+          </div>
+
+          <div class="ratio-card">
+            <div class="ratio-header">
+              <h4>Debt-Equity Ratio</h4>
+              <span class="ratio-badge">Leverage Indicator</span>
+            </div>
+            <p>Compares total debt with shareholders' equity to assess financial leverage. Banks prefer a debt-equity ratio of <strong>less than 3:1</strong>. A lower ratio suggests the business is not overly dependent on borrowed funds and has adequate owner investment.</p>
+          </div>
+
+          <div class="ratio-card">
+            <div class="ratio-header">
+              <h4>Net Profit Margin</h4>
+              <span class="ratio-badge">Profitability Indicator</span>
+            </div>
+            <p>Represents the percentage of revenue that remains as profit after all expenses. <strong>Higher is better</strong> - it demonstrates the business is efficiently managed and has good pricing power. Banks see this as a sign of sustainable operations.</p>
+          </div>
+
+          <div class="ratio-card">
+            <div class="ratio-header">
+              <h4>EBITDA</h4>
+              <span class="ratio-badge">Earnings Before Interest, Taxes, Depreciation & Amortization</span>
+            </div>
+            <p>A <strong>key indicator of business health</strong> and operational profitability. It strips out non-operational factors to show core business performance. Banks use EBITDA to assess the true cash-generating ability of a business before financing costs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="product-cta-section" id="cta">
+    <div class="container">
+      <h2>Get Personalized Financial Advisory</h2>
+      <p>Our VCFO experts will analyze your financial profile and recommend the best loan products, banks, and strategies for your needs.</p>
+      <div class="cta-buttons">
+        <a href="../index.html#contact" class="btn btn-accent btn-lg">Contact Our Experts</a>
+        <a href="#" class="btn btn-outline-light btn-lg" onclick="openWhatsApp(); return false;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <p class="disclaimer-text">Disclaimer: All calculations and eligibility results are indicative estimates. Actual loan terms depend on bank policies and individual profile assessment.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <div class="logo-mark">IF</div>
+            <div class="logo-text">
+              <span class="logo-name">Intellica</span>
+              <span class="logo-tagline">Financial Services</span>
+            </div>
+          </div>
+          <p>Your trusted partner for all loan needs. We connect you with the best financial products from leading banks in India.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Our Services</h4>
+          <a href="../index.html#services">Home Loan</a>
+          <a href="../index.html#services">Loan Against Property</a>
+          <a href="../index.html#services">CGTMSE Loan</a>
+          <a href="../index.html#services">Business Loan</a>
+          <a href="../index.html#services">Personal Loan</a>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="../index.html">Home</a>
+          <a href="../index.html#about">About Us</a>
+          <a href="../index.html#emi-calculator">EMI Calculator</a>
+          <a href="vcfo-advisor.html">VCFO Advisor</a>
+          <a href="../index.html#contact">Contact Us</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="tel:+919876543210">+91 98765 43210</a>
+          <a href="mailto:info@intellicafinancial.com">info@intellicafinancial.com</a>
+          <span>Mumbai, Maharashtra, India</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Intellica Financial Services Pvt Ltd. All rights reserved.</p>
+        <p class="disclaimer">Disclaimer: Interest rates and loan terms displayed are indicative and subject to change. Final rates depend on individual profile assessment and bank policies. Intellica Financial Services Pvt Ltd acts as a loan advisory and processing partner and does not directly lend money.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <div class="whatsapp-float" onclick="openWhatsApp()" title="Chat with us on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Chat with us</span>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Inline styles for nav dropdown and ratios grid (page-specific) -->
+  <style>
+    /* Navigation Dropdown */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      min-width: 200px;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: var(--transition);
+      z-index: 1001;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 8px 20px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: var(--primary-50);
+      color: var(--primary);
+    }
+
+    /* Financial Ratios Grid */
+    .ratios-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .ratio-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .ratio-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .ratio-card:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .ratio-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .ratio-header h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .ratio-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--primary-50);
+      color: var(--primary);
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .ratio-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Savings results column layout */
+    .savings-results-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .savings-results-col .savings-highlight {
+      grid-column: 1 / -1;
+    }
+
+    /* Responsive overrides */
+    @media (max-width: 768px) {
+      .nav-dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 0 0 0 16px;
+        min-width: auto;
+      }
+
+      .ratios-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ratio-card:last-child {
+        grid-column: auto;
+      }
+
+      .savings-results-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script src="../js/app.js"></script>
+  <script src="../js/vcfo-advisor.js"></script>
+</body>
+</html>

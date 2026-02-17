@@ -1,0 +1,963 @@
+/* ============================================
+   Product Pages & VCFO Advisor - Styles
+   ============================================ */
+
+/* ============================================
+   Product Page Hero
+   ============================================ */
+
+.product-hero {
+  padding: 140px 24px 60px;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #1a3f5c 100%);
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.product-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.product-hero .hero-bg-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.product-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+
+.product-breadcrumb a {
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.product-breadcrumb a:hover {
+  opacity: 1;
+}
+
+.product-breadcrumb span {
+  color: var(--accent-light);
+}
+
+.product-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: center;
+}
+
+.product-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.product-hero .hero-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 540px;
+}
+
+.product-hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.product-hero-stat {
+  text-align: center;
+}
+
+.product-hero-stat .stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent-light);
+}
+
+.product-hero-stat .stat-desc {
+  font-size: 0.78rem;
+  opacity: 0.65;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Product Hero Card */
+.product-info-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+}
+
+.product-info-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: white;
+}
+
+.info-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.88rem;
+}
+
+.info-card-row:last-child {
+  border-bottom: none;
+}
+
+.info-card-row .label {
+  opacity: 0.7;
+}
+
+.info-card-row .value {
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+/* ============================================
+   Product Details Section
+   ============================================ */
+
+.product-details {
+  padding: 80px 0;
+}
+
+.product-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.product-details h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.product-details p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   Feature List
+   ============================================ */
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
+}
+
+.feature-list .check-icon {
+  width: 24px;
+  height: 24px;
+  background: #dcfce7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature-list .check-icon svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent-dark);
+}
+
+/* ============================================
+   Eligibility Criteria Section
+   ============================================ */
+
+.eligibility-section {
+  padding: 80px 0;
+  background: var(--primary-50);
+}
+
+.eligibility-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 2.5rem;
+}
+
+.eligibility-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.eligibility-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.eligibility-card .card-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: var(--primary);
+}
+
+.eligibility-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.eligibility-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Documents Required Section
+   ============================================ */
+
+.documents-section {
+  padding: 80px 0;
+}
+
+.doc-categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 2.5rem;
+}
+
+.doc-category {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+}
+
+.doc-category h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.doc-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.doc-category ul li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.doc-category ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* ============================================
+   Bank Comparison Table
+   ============================================ */
+
+.bank-comparison-section {
+  padding: 80px 0;
+  background: var(--primary-50);
+}
+
+.bank-table-wrapper {
+  overflow-x: auto;
+  margin-top: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.bank-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  font-size: 0.88rem;
+}
+
+.bank-table thead {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: white;
+}
+
+.bank-table th {
+  padding: 14px 18px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.bank-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+}
+
+.bank-table tbody tr:hover {
+  background: var(--primary-50);
+}
+
+.bank-table .bank-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bank-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.bank-tag.psu {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.bank-tag.private {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.bank-tag.recommended {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* ============================================
+   FAQ / Accordion Section
+   ============================================ */
+
+.faq-section {
+  padding: 80px 0;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 2.5rem auto 0;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-item:hover {
+  border-color: var(--primary);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.faq-question:hover {
+  color: var(--primary);
+}
+
+.faq-question .faq-toggle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer-inner {
+  padding: 0 20px 16px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+}
+
+/* ============================================
+   CTA Section
+   ============================================ */
+
+.product-cta-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: white;
+  text-align: center;
+}
+
+.product-cta-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.product-cta-section p {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-cta-section .cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.product-cta-section .disclaimer-text {
+  font-size: 0.72rem;
+  opacity: 0.5;
+  margin-top: 1.5rem;
+}
+
+/* ============================================
+   VCFO Advisor Page
+   ============================================ */
+
+.vcfo-hero {
+  padding: 140px 24px 60px;
+  background: linear-gradient(135deg, #0a1628 0%, var(--primary-dark) 40%, var(--primary) 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.vcfo-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.vcfo-hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-light), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vcfo-hero p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.vcfo-tools-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.vcfo-tool-btn {
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: white;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.vcfo-tool-btn:hover,
+.vcfo-tool-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.vcfo-tool-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ============================================
+   VCFO Tool Sections
+   ============================================ */
+
+.vcfo-tool-section {
+  padding: 60px 0;
+}
+
+.vcfo-tool-section:nth-child(even) {
+  background: var(--primary-50);
+}
+
+.tool-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+/* Eligibility Calculator */
+.eligibility-calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.calc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+}
+
+.calc-input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.calc-input-group input,
+.calc-input-group select {
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  transition: var(--transition);
+}
+
+.calc-input-group input:focus,
+.calc-input-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(27, 77, 122, 0.12);
+}
+
+.calc-input-group .input-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Results Panel */
+.results-panel {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  color: white;
+}
+
+.results-panel h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item .result-label {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.result-item .result-value {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.result-item.highlight-result {
+  padding: 16px 0;
+}
+
+.result-item.highlight-result .result-value {
+  font-size: 1.5rem;
+  color: var(--accent-light);
+}
+
+/* Savings Calculator */
+.savings-calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.savings-result-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.savings-result-card .savings-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.savings-result-card .savings-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.savings-result-card .savings-value.green {
+  color: var(--accent-dark);
+}
+
+.savings-result-card .savings-value.gold {
+  color: var(--gold);
+}
+
+.savings-highlight {
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  margin-top: 16px;
+}
+
+.savings-highlight .highlight-label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.savings-highlight .highlight-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* Bank Comparison Tool */
+.bank-filter-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.bank-filter-btn {
+  padding: 8px 18px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  color: var(--text-secondary);
+}
+
+.bank-filter-btn:hover,
+.bank-filter-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.bank-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bank-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.bank-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.bank-card.recommended {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.bank-card.recommended::after {
+  content: 'Recommended';
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  background: var(--accent);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.bank-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.bank-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.bank-card-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.bank-card-detail .detail-value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* CGTMSE Eligibility Checker */
+.cgtmse-checker {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cgtmse-result {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-top: 1.5rem;
+  display: none;
+}
+
+.cgtmse-result.visible {
+  display: block;
+}
+
+.cgtmse-result h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.cgtmse-result .result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.cgtmse-result .result-row:last-child {
+  border-bottom: none;
+}
+
+.cgtmse-result .result-row .row-label {
+  color: var(--text-secondary);
+}
+
+.cgtmse-result .result-row .row-value {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ============================================
+   Product Page Responsive
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .product-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .product-details-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .eligibility-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eligibility-calc-grid,
+  .savings-calc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bank-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-hero h1 {
+    font-size: 2rem;
+  }
+
+  .product-hero-stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .eligibility-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .bank-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vcfo-hero h1 {
+    font-size: 2rem;
+  }
+
+  .tool-card {
+    padding: 1.5rem;
+  }
+
+  .savings-highlight .highlight-value {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .product-hero-cta {
+    flex-direction: column;
+  }
+}
