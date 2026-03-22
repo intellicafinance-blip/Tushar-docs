@@ -3,632 +3,709 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intellica Financial Services Pvt Ltd | Home Loan, LAP, CGTMSE, Business & Personal Loans</title>
-  <meta name="description" content="Intellica Financial Services Pvt Ltd - Your trusted partner for Home Loans, Loan Against Property, CGTMSE Loans, Business Loans, and Personal Loans. Get the best rates and quick approvals.">
-  <meta name="keywords" content="home loan, LAP, loan against property, CGTMSE loan, business loan, personal loan, financial services, Intellica">
+  <title>PropInsight India – Real Estate Demand Dashboard | Builder Profiles | Property Listings</title>
+  <meta name="description" content="Explore real estate demand across Indian cities. View price trends, builder profiles with RERA compliance, and list your property for free.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- Chart.js for demand visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Leaflet for interactive map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/realestate.css">
 </head>
 <body>
 
-  <!-- Header / Navigation -->
-  <header class="header" id="header">
-    <div class="header-inner">
-      <a href="#home" class="logo">
-        <div class="logo-mark">IF</div>
-        <div class="logo-text">
-          <span class="logo-name">Intellica</span>
-          <span class="logo-tagline">Financial Services</span>
+  <!-- ===================== HEADER ===================== -->
+  <header class="re-header" id="reHeader">
+    <div class="re-container re-header-inner">
+      <a href="#hero" class="re-logo">
+        <div class="re-logo-mark">PI</div>
+        <div class="re-logo-text">
+          <span class="re-logo-name">PropInsight</span>
+          <span class="re-logo-tagline">India Real Estate</span>
         </div>
       </a>
 
-      <nav class="nav" id="mainNav">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#about" class="nav-link">About Us</a>
-        <a href="#emi-calculator" class="nav-link">EMI Calculator</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <nav class="re-nav" id="reNav">
+        <a href="#demand-dashboard" class="re-nav-link">Demand Map</a>
+        <a href="#price-trends" class="re-nav-link">Price Trends</a>
+        <a href="#builders" class="re-nav-link">Builders</a>
+        <a href="#listings" class="re-nav-link">Properties</a>
+        <a href="#list-property" class="re-nav-link">List Property</a>
       </nav>
 
-      <div class="header-actions">
-        <a href="#contact" class="btn btn-accent btn-sm">Get Free Consultation</a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <div class="re-header-actions">
+        <a href="#list-property" class="re-btn re-btn-primary re-btn-sm">+ List Your Property</a>
+        <button class="re-mobile-toggle" id="reMobileToggle" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-bg-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+  <!-- ===================== HERO ===================== -->
+  <section class="re-hero" id="hero">
+    <div class="re-hero-bg">
+      <div class="re-hero-shape re-hero-shape-1"></div>
+      <div class="re-hero-shape re-hero-shape-2"></div>
+      <div class="re-hero-shape re-hero-shape-3"></div>
+      <div class="re-hero-grid"></div>
     </div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-badge">Trusted by 1000+ Happy Customers</div>
-        <h1>Your Financial Goals,<br><span>Our Expertise.</span></h1>
-        <p>Intellica Financial Services Pvt Ltd helps you secure the best loan deals with competitive interest rates, quick approvals, and personalized guidance for Home Loans, LAP, CGTMSE, Business & Personal Loans.</p>
-        <div class="hero-cta">
-          <a href="#services" class="btn btn-primary btn-lg">Explore Our Services</a>
-          <a href="#emi-calculator" class="btn btn-outline-light btn-lg">Calculate EMI</a>
-        </div>
-        <div class="hero-trust">
-          <div class="trust-item">
-            <div class="trust-number">15+</div>
-            <div class="trust-label">Bank Partners</div>
-          </div>
-          <div class="trust-divider"></div>
-          <div class="trust-item">
-            <div class="trust-number">500 Cr+</div>
-            <div class="trust-label">Loans Disbursed</div>
-          </div>
-          <div class="trust-divider"></div>
-          <div class="trust-item">
-            <div class="trust-number">98%</div>
-            <div class="trust-label">Approval Rate</div>
-          </div>
-        </div>
+    <div class="re-container re-hero-content">
+      <div class="re-hero-badge">
+        <span class="re-badge-dot"></span>
+        Live Demand Intelligence Across India
       </div>
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="hero-card-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M3 21h18M3 7v1a3 3 0 003 3h12a3 3 0 003-3V7M6 21V11M18 21V11M12 21V11M3 7l9-4 9 4"/>
-            </svg>
-          </div>
-          <div class="hero-card-title">Quick Loan Approval</div>
-          <div class="hero-card-desc">Get approval within 48 hours with minimal documentation</div>
-          <div class="hero-card-rate">
-            <span class="rate-label">Rates starting from</span>
-            <span class="rate-value">8.35%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h1 class="re-hero-title">
+        Find Where India's
+        <span class="re-gradient-text">Real Estate Demand</span>
+        Is Surging
+      </h1>
+      <p class="re-hero-subtitle">
+        Bird's-eye view of property demand, price ranges, verified builder profiles, and RERA compliance across Delhi, Noida, Mumbai, Chandigarh & 20+ cities.
+      </p>
 
-  <!-- Services Section -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Our Services</span>
-        <h2>Comprehensive Loan Solutions<br>for Every Need</h2>
-        <p>We offer a wide range of loan products tailored to meet your personal and business financial requirements.</p>
+      <!-- Search Bar -->
+      <div class="re-search-bar">
+        <div class="re-search-field">
+          <svg class="re-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="heroSearch" placeholder="Search city, locality, builder..." class="re-search-input" autocomplete="off">
+          <div class="re-search-suggestions" id="searchSuggestions"></div>
+        </div>
+        <select class="re-search-select" id="heroPropertyType">
+          <option value="">Property Type</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+          <option>Plot</option>
+          <option>Commercial</option>
+          <option>Builder Floor</option>
+        </select>
+        <select class="re-search-select" id="heroBudget">
+          <option value="">Budget Range</option>
+          <option>Under ₹30L</option>
+          <option>₹30L – ₹60L</option>
+          <option>₹60L – ₹1Cr</option>
+          <option>₹1Cr – ₹2Cr</option>
+          <option>₹2Cr – ₹5Cr</option>
+          <option>Above ₹5Cr</option>
+        </select>
+        <button class="re-btn re-btn-accent re-search-btn" onclick="triggerSearch()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Search
+        </button>
       </div>
 
-      <div class="services-grid">
-        <!-- Home Loan -->
-        <div class="service-card" data-service="home-loan">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
-              <path d="M9 21V12h6v9"/>
-            </svg>
-          </div>
-          <h3>Home Loan</h3>
-          <p>Make your dream home a reality with our competitive home loan offerings from leading banks. Low interest rates, flexible tenure, and hassle-free processing.</p>
-          <ul class="service-highlights">
-            <li>Interest rates from <strong>8.35% p.a.</strong></li>
-            <li>Tenure up to <strong>30 years</strong></li>
-            <li>Loan up to <strong>90% of property value</strong></li>
-            <li>Special rates for women borrowers</li>
-          </ul>
-          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+      <!-- Hero Stats -->
+      <div class="re-hero-stats">
+        <div class="re-stat-chip">
+          <strong>2,40,000+</strong>
+          <span>Active Listings</span>
         </div>
-
-        <!-- Loan Against Property -->
-        <div class="service-card" data-service="lap">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 9h18M9 21V9"/>
-            </svg>
-          </div>
-          <h3>Loan Against Property</h3>
-          <p>Unlock the value of your property to fund your business expansion, education, wedding, or any other financial need with attractive LAP options.</p>
-          <ul class="service-highlights">
-            <li>Interest rates from <strong>9.10% p.a.</strong></li>
-            <li>Up to <strong>65% of property value</strong></li>
-            <li>Residential & commercial property accepted</li>
-            <li>Overdraft facility available</li>
-          </ul>
-          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+        <div class="re-stat-chip">
+          <strong>850+</strong>
+          <span>Verified Builders</span>
         </div>
-
-        <!-- CGTMSE Loan -->
-        <div class="service-card" data-service="cgtmse">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3>CGTMSE Loan</h3>
-          <p>Collateral-free loans for MSMEs backed by the Credit Guarantee Fund Trust. Grow your business without pledging assets.</p>
-          <ul class="service-highlights">
-            <li><strong>No collateral required</strong> up to Rs. 5 Cr</li>
-            <li>Government-backed guarantee</li>
-            <li>For manufacturing, services & trading</li>
-            <li>Support for micro & small enterprises</li>
-          </ul>
-          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+        <div class="re-stat-chip">
+          <strong>28</strong>
+          <span>Cities Covered</span>
         </div>
-
-        <!-- Business Loan -->
-        <div class="service-card" data-service="business-loan">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M2 7a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7z"/>
-              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
-              <line x1="2" y1="10" x2="22" y2="10"/>
-            </svg>
-          </div>
-          <h3>Business Loan</h3>
-          <p>Fuel your business growth with our quick and flexible business loan solutions. Whether you need working capital or expansion funds, we have you covered.</p>
-          <ul class="service-highlights">
-            <li>Loans from <strong>Rs. 5 Lakh to Rs. 50 Cr</strong></li>
-            <li>Quick disbursement within <strong>72 hours</strong></li>
-            <li>Minimal documentation required</li>
-            <li>Flexible repayment options</li>
-          </ul>
-          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
-        </div>
-
-        <!-- Personal Loan -->
-        <div class="service-card" data-service="personal-loan">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <h3>Personal Loan</h3>
-          <p>Get instant personal loans for weddings, travel, medical emergencies, or any personal expense. No collateral needed with quick approvals.</p>
-          <ul class="service-highlights">
-            <li>Interest rates from <strong>10.49% p.a.</strong></li>
-            <li><strong>No collateral</strong> required</li>
-            <li>Instant approval for salaried professionals</li>
-            <li>Flexible tenure from <strong>1 to 7 years</strong></li>
-          </ul>
-          <a href="#contact" class="service-cta">Apply Now <span>&rarr;</span></a>
+        <div class="re-stat-chip">
+          <strong>98%</strong>
+          <span>RERA Verified</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="why-us" id="why-us">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Why Intellica</span>
-        <h2>Why Thousands Trust Us<br>With Their Financial Needs</h2>
+  <!-- ===================== DEMAND DASHBOARD ===================== -->
+  <section class="re-section" id="demand-dashboard">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Eagle-Eye Demand View</div>
+        <h2 class="re-section-title">Real Estate Demand Heatmap</h2>
+        <p class="re-section-subtitle">Live demand index across major Indian cities. Higher score = higher buyer activity & appreciation potential.</p>
       </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
+
+      <!-- City Filter Tabs -->
+      <div class="re-city-tabs" id="cityTabs">
+        <button class="re-city-tab active" data-city="all">All Cities</button>
+        <button class="re-city-tab" data-city="delhi">Delhi NCR</button>
+        <button class="re-city-tab" data-city="mumbai">Mumbai</button>
+        <button class="re-city-tab" data-city="noida">Noida</button>
+        <button class="re-city-tab" data-city="chandigarh">Chandigarh</button>
+        <button class="re-city-tab" data-city="bangalore">Bangalore</button>
+        <button class="re-city-tab" data-city="pune">Pune</button>
+        <button class="re-city-tab" data-city="hyderabad">Hyderabad</button>
+      </div>
+
+      <div class="re-dashboard-grid">
+        <!-- Left: Interactive Map -->
+        <div class="re-card re-map-card">
+          <div class="re-card-header">
+            <h3>India Demand Map</h3>
+            <div class="re-map-legend">
+              <span class="re-legend-dot" style="background:#ef4444"></span> Very High
+              <span class="re-legend-dot" style="background:#f97316"></span> High
+              <span class="re-legend-dot" style="background:#eab308"></span> Medium
+              <span class="re-legend-dot" style="background:#22c55e"></span> Growing
+            </div>
           </div>
-          <h4>Quick Processing</h4>
-          <p>Get your loan approved within 48-72 hours with our streamlined digital process.</p>
+          <div id="indiaMap" class="re-map-container"></div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
-            </svg>
-          </div>
-          <h4>100% Secure</h4>
-          <p>Your data is protected with bank-grade security. We follow strict privacy policies.</p>
+
+        <!-- Right: Demand Cards -->
+        <div class="re-demand-cards" id="demandCards">
+          <!-- JS populated -->
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-            </svg>
+      </div>
+
+      <!-- Demand Bar Chart -->
+      <div class="re-card re-chart-card">
+        <div class="re-card-header">
+          <h3>City-wise Demand Index (Q1 2026)</h3>
+          <div class="re-chart-toggles">
+            <button class="re-toggle-btn active" data-chart="demand">Demand</button>
+            <button class="re-toggle-btn" data-chart="price">Avg Price/sqft</button>
+            <button class="re-toggle-btn" data-chart="supply">New Supply</button>
           </div>
-          <h4>Best Interest Rates</h4>
-          <p>We partner with 15+ banks to get you the most competitive interest rates available.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-          </div>
-          <h4>Dedicated Support</h4>
-          <p>A personal relationship manager guides you through every step of the loan journey.</p>
+        <canvas id="demandChart" height="100"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICE TRENDS ===================== -->
+  <section class="re-section re-section-alt" id="price-trends">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Market Intelligence</div>
+        <h2 class="re-section-title">City-wise Price Ranges & Trends</h2>
+        <p class="re-section-subtitle">Avg price per sq.ft, YoY appreciation, and micro-market breakdown.</p>
+      </div>
+
+      <!-- City Price Cards Grid -->
+      <div class="re-price-grid" id="priceGrid">
+        <!-- JS populated -->
+      </div>
+
+      <!-- Price Trend Line Chart -->
+      <div class="re-card re-trend-card">
+        <div class="re-card-header">
+          <h3>12-Month Price Appreciation Trend</h3>
+          <select class="re-select-sm" id="trendCitySelect">
+            <option value="delhi">Delhi NCR</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="noida">Noida</option>
+            <option value="chandigarh">Chandigarh</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="pune">Pune</option>
+          </select>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-          </div>
-          <h4>Minimal Documentation</h4>
-          <p>Simplified paperwork with digital document upload. We handle the rest for you.</p>
+        <canvas id="trendChart" height="80"></canvas>
+      </div>
+
+      <!-- Locality Deep Dive -->
+      <div class="re-card">
+        <div class="re-card-header">
+          <h3>Micro-Market Price Breakdown</h3>
+          <select class="re-select-sm" id="localityCity">
+            <option value="delhi">Delhi NCR</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="noida">Noida</option>
+            <option value="chandigarh">Chandigarh</option>
+          </select>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
-            </svg>
-          </div>
-          <h4>Multiple Bank Options</h4>
-          <p>Compare loan offers from PSU and private banks. Choose the best fit for your needs.</p>
+        <div class="re-locality-table-wrap">
+          <table class="re-locality-table" id="localityTable">
+            <thead>
+              <tr>
+                <th>Locality / Sector</th>
+                <th>Avg ₹/sqft</th>
+                <th>Price Range</th>
+                <th>YoY Growth</th>
+                <th>Demand Score</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody id="localityTableBody">
+              <!-- JS populated -->
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-content">
-          <span class="section-tag">About Us</span>
-          <h2>Intellica Financial Services Pvt Ltd</h2>
-          <p class="about-lead">We are a leading financial services company dedicated to helping individuals and businesses achieve their financial goals through expert loan advisory and processing services.</p>
-          <p>With years of experience in the financial services industry, Intellica Financial Services has built strong relationships with major PSU and private banks across India. Our team of expert loan advisors works tirelessly to understand your unique financial needs and match you with the best loan products available in the market.</p>
-          <p>Whether you're buying your first home, expanding your business, or need funds for personal requirements, we ensure a seamless and transparent loan process from application to disbursement.</p>
-          <div class="about-stats">
-            <div class="about-stat">
-              <div class="stat-number">1000+</div>
-              <div class="stat-label">Happy Customers</div>
-            </div>
-            <div class="about-stat">
-              <div class="stat-number">15+</div>
-              <div class="stat-label">Bank Partners</div>
-            </div>
-            <div class="about-stat">
-              <div class="stat-number">5+</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-          </div>
-        </div>
-        <div class="about-visual">
-          <div class="about-card about-card-1">
-            <div class="about-card-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-            </div>
-            <span>Trusted Advisory</span>
-          </div>
-          <div class="about-card about-card-2">
-            <div class="about-card-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                <polyline points="17 6 23 6 23 12"/>
-              </svg>
-            </div>
-            <span>Growing Every Day</span>
-          </div>
-          <div class="about-card about-card-3">
-            <div class="about-card-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <span>Secure & Reliable</span>
-          </div>
+  <!-- ===================== BUILDERS ===================== -->
+  <section class="re-section" id="builders">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Developer Intelligence</div>
+        <h2 class="re-section-title">Verified Builder Profiles</h2>
+        <p class="re-section-subtitle">Complete master data — projects delivered, RERA status, authority approvals, and buyer demand ratings.</p>
+      </div>
+
+      <!-- Builder Filter -->
+      <div class="re-filter-bar">
+        <input type="text" id="builderSearch" placeholder="Search builder name..." class="re-filter-input">
+        <select class="re-filter-select" id="builderCityFilter">
+          <option value="">All Cities</option>
+          <option>Delhi NCR</option>
+          <option>Mumbai</option>
+          <option>Noida</option>
+          <option>Chandigarh</option>
+          <option>Bangalore</option>
+          <option>Pune</option>
+          <option>Hyderabad</option>
+        </select>
+        <select class="re-filter-select" id="builderReraFilter">
+          <option value="">RERA Status</option>
+          <option value="verified">RERA Verified</option>
+          <option value="pending">Pending</option>
+        </select>
+        <select class="re-filter-select" id="builderRatingFilter">
+          <option value="">Rating</option>
+          <option value="5">5 Star</option>
+          <option value="4">4+ Star</option>
+          <option value="3">3+ Star</option>
+        </select>
+      </div>
+
+      <!-- Builder Cards Grid -->
+      <div class="re-builders-grid" id="buildersGrid">
+        <!-- JS populated -->
+      </div>
+
+      <!-- Builder Modal -->
+      <div class="re-modal-overlay" id="builderModal">
+        <div class="re-modal">
+          <button class="re-modal-close" onclick="closeBuilderModal()">✕</button>
+          <div id="builderModalContent"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EMI Calculator Section -->
-  <section class="emi-section" id="emi-calculator">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">EMI Calculator</span>
-        <h2>Plan Your Loan Repayment</h2>
-        <p>Use our EMI calculator to estimate your monthly installments and plan your finances better.</p>
+  <!-- ===================== PROPERTY LISTINGS ===================== -->
+  <section class="re-section re-section-alt" id="listings">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Live Listings</div>
+        <h2 class="re-section-title">Available Properties</h2>
+        <p class="re-section-subtitle">Browse verified properties from owners and builders.</p>
       </div>
 
-      <div class="calculator-wrapper">
-        <div class="calculator-inputs">
-          <div class="calc-group">
-            <label for="calcLoanType">Loan Type</label>
-            <select id="calcLoanType" onchange="onCalcLoanTypeChange()">
-              <option value="home-loan">Home Loan</option>
-              <option value="lap">Loan Against Property</option>
-              <option value="cgtmse">CGTMSE Loan</option>
-              <option value="business-loan">Business Loan</option>
-              <option value="personal-loan">Personal Loan</option>
-            </select>
-          </div>
-          <div class="calc-group">
-            <div class="calc-label-row">
-              <label for="calcAmount">Loan Amount</label>
-              <span class="calc-value-display" id="calcAmountValue">Rs. 50,00,000</span>
-            </div>
-            <input type="range" id="calcAmount" min="100000" max="100000000" step="50000" value="5000000" oninput="updateEMI()">
-            <div class="calc-range-labels">
-              <span>Rs. 1 Lakh</span>
-              <span>Rs. 10 Crore</span>
-            </div>
-          </div>
-          <div class="calc-group">
-            <div class="calc-label-row">
-              <label for="calcRate">Interest Rate (% p.a.)</label>
-              <span class="calc-value-display" id="calcRateValue">8.50%</span>
-            </div>
-            <input type="range" id="calcRate" min="7" max="24" step="0.1" value="8.5" oninput="updateEMI()">
-            <div class="calc-range-labels">
-              <span>7%</span>
-              <span>24%</span>
-            </div>
-          </div>
-          <div class="calc-group">
-            <div class="calc-label-row">
-              <label for="calcTenure">Loan Tenure</label>
-              <span class="calc-value-display" id="calcTenureValue">20 Years</span>
-            </div>
-            <input type="range" id="calcTenure" min="1" max="30" step="1" value="20" oninput="updateEMI()">
-            <div class="calc-range-labels">
-              <span>1 Year</span>
-              <span>30 Years</span>
-            </div>
-          </div>
+      <!-- Listing Filters -->
+      <div class="re-listing-filters">
+        <div class="re-filter-tabs" id="listingTypeTabs">
+          <button class="re-filter-tab active" data-type="all">All</button>
+          <button class="re-filter-tab" data-type="buy">Buy</button>
+          <button class="re-filter-tab" data-type="rent">Rent</button>
+          <button class="re-filter-tab" data-type="new">New Projects</button>
         </div>
+        <div class="re-listing-filter-row">
+          <select class="re-filter-select" id="listingCity">
+            <option value="">All Cities</option>
+            <option>Delhi NCR</option>
+            <option>Mumbai</option>
+            <option>Noida</option>
+            <option>Chandigarh</option>
+            <option>Bangalore</option>
+            <option>Pune</option>
+          </select>
+          <select class="re-filter-select" id="listingType">
+            <option value="">Property Type</option>
+            <option>Apartment</option>
+            <option>Villa</option>
+            <option>Plot</option>
+            <option>Commercial</option>
+            <option>Builder Floor</option>
+            <option>Penthouse</option>
+          </select>
+          <select class="re-filter-select" id="listingBhk">
+            <option value="">BHK</option>
+            <option>1 BHK</option>
+            <option>2 BHK</option>
+            <option>3 BHK</option>
+            <option>4 BHK</option>
+            <option>5+ BHK</option>
+          </select>
+          <select class="re-filter-select" id="listingBudget">
+            <option value="">Budget</option>
+            <option>Under ₹30L</option>
+            <option>₹30L – ₹60L</option>
+            <option>₹60L – ₹1Cr</option>
+            <option>₹1Cr – ₹2Cr</option>
+            <option>₹2Cr – ₹5Cr</option>
+            <option>Above ₹5Cr</option>
+          </select>
+          <button class="re-btn re-btn-primary re-btn-sm" onclick="filterListings()">Apply Filters</button>
+        </div>
+      </div>
 
-        <div class="calculator-results">
-          <div class="emi-result-card">
-            <div class="emi-label">Monthly EMI</div>
-            <div class="emi-amount" id="emiAmount">Rs. 43,391</div>
-          </div>
+      <!-- Listings Grid -->
+      <div class="re-listings-grid" id="listingsGrid">
+        <!-- JS populated -->
+      </div>
 
-          <div class="emi-chart-area">
-            <div class="donut-wrapper">
-              <svg viewBox="0 0 120 120" class="donut-svg">
-                <circle cx="60" cy="60" r="50" fill="none" stroke="#e8ecf1" stroke-width="16"/>
-                <circle cx="60" cy="60" r="50" fill="none" stroke="#1B4D7A" stroke-width="16"
-                  id="principalArc" stroke-dasharray="150 314.16" stroke-linecap="round" class="donut-arc"/>
-                <circle cx="60" cy="60" r="50" fill="none" stroke="#22C55E" stroke-width="16"
-                  id="interestArc" stroke-dasharray="164.16 314.16" stroke-dashoffset="-150" stroke-linecap="round" class="donut-arc"/>
-              </svg>
-              <div class="donut-center-text">
-                <span class="donut-total" id="donutTotal">Rs. 1.04 Cr</span>
-                <span class="donut-label">Total Payment</span>
+      <div class="re-load-more-wrap">
+        <button class="re-btn re-btn-outline" id="loadMoreBtn" onclick="loadMoreListings()">Load More Properties</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LIST YOUR PROPERTY ===================== -->
+  <section class="re-section re-list-section" id="list-property">
+    <div class="re-container">
+      <div class="re-list-grid">
+        <!-- Left Info -->
+        <div class="re-list-info">
+          <div class="re-section-tag">For Owners & Builders</div>
+          <h2 class="re-section-title re-left">List Your Property — It's Free</h2>
+          <p class="re-list-desc">Reach lakhs of verified buyers across India. Get leads directly to your phone and email.</p>
+          <ul class="re-list-benefits">
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
               </div>
+              <div>
+                <strong>Direct Buyer Leads</strong>
+                <span>Calls and enquiries direct to your number</span>
+              </div>
+            </li>
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <strong>RERA Badge Display</strong>
+                <span>Show your RERA registration prominently</span>
+              </div>
+            </li>
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <div>
+                <strong>Demand Analytics</strong>
+                <span>See how your listing compares to market demand</span>
+              </div>
+            </li>
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <strong>24/7 Visibility</strong>
+                <span>Your property listed across all platforms</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Form -->
+        <div class="re-card re-list-form-card">
+          <h3 class="re-form-title">Post Your Property</h3>
+
+          <!-- Progress Steps -->
+          <div class="re-form-steps">
+            <div class="re-form-step active" id="step-indicator-1">
+              <div class="re-step-num">1</div>
+              <span>Basic Info</span>
             </div>
-            <div class="chart-legend-row">
-              <div class="legend-entry">
-                <span class="legend-dot" style="background:#1B4D7A"></span>
-                <div>
-                  <div class="legend-title">Principal</div>
-                  <div class="legend-value" id="legendPrincipal">Rs. 50.00 L</div>
+            <div class="re-step-line"></div>
+            <div class="re-form-step" id="step-indicator-2">
+              <div class="re-step-num">2</div>
+              <span>Details</span>
+            </div>
+            <div class="re-step-line"></div>
+            <div class="re-form-step" id="step-indicator-3">
+              <div class="re-step-num">3</div>
+              <span>Contact</span>
+            </div>
+          </div>
+
+          <form id="listPropertyForm" novalidate>
+            <!-- Step 1 -->
+            <div class="re-form-step-panel active" id="formStep1">
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Listing Type *</label>
+                  <div class="re-radio-group">
+                    <label class="re-radio-label"><input type="radio" name="listingType" value="sell" checked> Sell</label>
+                    <label class="re-radio-label"><input type="radio" name="listingType" value="rent"> Rent</label>
+                    <label class="re-radio-label"><input type="radio" name="listingType" value="pg"> PG/Co-living</label>
+                  </div>
+                </div>
+                <div class="re-form-group">
+                  <label>Property Type *</label>
+                  <select class="re-form-input" id="fp_propertyType" required>
+                    <option value="">Select</option>
+                    <option>Apartment / Flat</option>
+                    <option>Independent House</option>
+                    <option>Villa</option>
+                    <option>Builder Floor</option>
+                    <option>Plot / Land</option>
+                    <option>Commercial Office</option>
+                    <option>Shop / Showroom</option>
+                    <option>Warehouse</option>
+                  </select>
                 </div>
               </div>
-              <div class="legend-entry">
-                <span class="legend-dot" style="background:#22C55E"></span>
-                <div>
-                  <div class="legend-title">Interest</div>
-                  <div class="legend-value" id="legendInterest">Rs. 54.14 L</div>
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>City *</label>
+                  <select class="re-form-input" id="fp_city" required>
+                    <option value="">Select City</option>
+                    <option>Delhi</option>
+                    <option>Noida</option>
+                    <option>Greater Noida</option>
+                    <option>Gurgaon</option>
+                    <option>Faridabad</option>
+                    <option>Ghaziabad</option>
+                    <option>Mumbai</option>
+                    <option>Navi Mumbai</option>
+                    <option>Thane</option>
+                    <option>Pune</option>
+                    <option>Chandigarh</option>
+                    <option>Mohali</option>
+                    <option>Panchkula</option>
+                    <option>Bangalore</option>
+                    <option>Hyderabad</option>
+                    <option>Chennai</option>
+                    <option>Ahmedabad</option>
+                    <option>Kolkata</option>
+                    <option>Jaipur</option>
+                    <option>Lucknow</option>
+                  </select>
+                </div>
+                <div class="re-form-group">
+                  <label>Locality / Sector *</label>
+                  <input type="text" class="re-form-input" id="fp_locality" placeholder="e.g. Sector 62, Dwarka" required>
                 </div>
               </div>
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>BHK / Configuration *</label>
+                  <select class="re-form-input" id="fp_bhk">
+                    <option>1 BHK</option>
+                    <option>2 BHK</option>
+                    <option>3 BHK</option>
+                    <option>4 BHK</option>
+                    <option>5 BHK</option>
+                    <option>Studio</option>
+                    <option>N/A (Plot/Commercial)</option>
+                  </select>
+                </div>
+                <div class="re-form-group">
+                  <label>Built-up Area (sq.ft) *</label>
+                  <input type="number" class="re-form-input" id="fp_area" placeholder="e.g. 1200" required>
+                </div>
+              </div>
+              <button type="button" class="re-btn re-btn-primary re-btn-full" onclick="nextStep(2)">Continue →</button>
             </div>
-          </div>
 
-          <a href="#contact" class="btn btn-primary btn-block">Apply For This Loan</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials / Process Section -->
-  <section class="process-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">How It Works</span>
-        <h2>Simple 4-Step Loan Process</h2>
-      </div>
-      <div class="process-grid">
-        <div class="process-step">
-          <div class="step-number">01</div>
-          <h4>Share Your Requirement</h4>
-          <p>Tell us your loan requirement, amount, and preferred tenure. Our experts will listen.</p>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step">
-          <div class="step-number">02</div>
-          <h4>Get Best Offers</h4>
-          <p>We compare offers from 15+ banks and find the best deal matching your profile.</p>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step">
-          <div class="step-number">03</div>
-          <h4>Submit Documents</h4>
-          <p>Minimal paperwork with digital upload. We guide you through every document needed.</p>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step">
-          <div class="step-number">04</div>
-          <h4>Loan Disbursement</h4>
-          <p>Quick approval and disbursement. Your funds reach you within the shortest time possible.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Get In Touch</span>
-        <h2>Start Your Loan Journey Today</h2>
-        <p>Fill in the form below or reach out to us directly. Our team will get back to you within 24 hours.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-form-wrapper">
-          <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
-            <div class="form-row">
-              <div class="form-field">
-                <label for="contactName">Full Name *</label>
-                <input type="text" id="contactName" required placeholder="Enter your full name">
+            <!-- Step 2 -->
+            <div class="re-form-step-panel" id="formStep2">
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Expected Price *</label>
+                  <input type="text" class="re-form-input" id="fp_price" placeholder="e.g. ₹85,00,000" required>
+                </div>
+                <div class="re-form-group">
+                  <label>Price Negotiable?</label>
+                  <div class="re-radio-group">
+                    <label class="re-radio-label"><input type="radio" name="negotiable" value="yes" checked> Yes</label>
+                    <label class="re-radio-label"><input type="radio" name="negotiable" value="no"> No</label>
+                  </div>
+                </div>
               </div>
-              <div class="form-field">
-                <label for="contactPhone">Phone Number *</label>
-                <input type="tel" id="contactPhone" required placeholder="Enter your phone number">
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Floor Number</label>
+                  <input type="text" class="re-form-input" id="fp_floor" placeholder="e.g. 5th of 15">
+                </div>
+                <div class="re-form-group">
+                  <label>Age of Property</label>
+                  <select class="re-form-input" id="fp_age">
+                    <option>Under Construction</option>
+                    <option>New (0–1 year)</option>
+                    <option>1–5 years</option>
+                    <option>5–10 years</option>
+                    <option>10+ years</option>
+                  </select>
+                </div>
+              </div>
+              <div class="re-form-group">
+                <label>Key Amenities</label>
+                <div class="re-checkbox-grid">
+                  <label class="re-checkbox-label"><input type="checkbox" value="parking"> Parking</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="gym"> Gym</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="pool"> Swimming Pool</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="security"> 24/7 Security</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="club"> Club House</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="lift"> Lift</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="garden"> Garden</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="powerbackup"> Power Backup</label>
+                </div>
+              </div>
+              <div class="re-form-group">
+                <label>RERA Registration Number (if applicable)</label>
+                <input type="text" class="re-form-input" id="fp_rera" placeholder="e.g. UPRERAPRJ123456">
+              </div>
+              <div class="re-form-group">
+                <label>Property Description</label>
+                <textarea class="re-form-input re-form-textarea" id="fp_desc" placeholder="Describe your property, nearby landmarks, highlights..."></textarea>
+              </div>
+              <div class="re-form-row">
+                <button type="button" class="re-btn re-btn-outline" onclick="nextStep(1)">← Back</button>
+                <button type="button" class="re-btn re-btn-primary" onclick="nextStep(3)">Continue →</button>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="contactEmail">Email Address</label>
-                <input type="email" id="contactEmail" placeholder="Enter your email">
+
+            <!-- Step 3 -->
+            <div class="re-form-step-panel" id="formStep3">
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Your Name *</label>
+                  <input type="text" class="re-form-input" id="fp_name" placeholder="Full Name" required>
+                </div>
+                <div class="re-form-group">
+                  <label>Role *</label>
+                  <select class="re-form-input" id="fp_role">
+                    <option>Owner</option>
+                    <option>Builder / Developer</option>
+                    <option>Agent / Broker</option>
+                  </select>
+                </div>
               </div>
-              <div class="form-field">
-                <label for="contactLoanType">Loan Type *</label>
-                <select id="contactLoanType" required>
-                  <option value="">Select Loan Type</option>
-                  <option value="home-loan">Home Loan</option>
-                  <option value="lap">Loan Against Property</option>
-                  <option value="cgtmse">CGTMSE Loan</option>
-                  <option value="business-loan">Business Loan</option>
-                  <option value="personal-loan">Personal Loan</option>
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Mobile Number *</label>
+                  <input type="tel" class="re-form-input" id="fp_mobile" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="re-form-group">
+                  <label>Email Address *</label>
+                  <input type="email" class="re-form-input" id="fp_email" placeholder="you@email.com" required>
+                </div>
+              </div>
+              <div class="re-form-group">
+                <label>Preferred Contact Time</label>
+                <select class="re-form-input" id="fp_contactTime">
+                  <option>Any Time</option>
+                  <option>Morning (9 AM – 12 PM)</option>
+                  <option>Afternoon (12 PM – 4 PM)</option>
+                  <option>Evening (4 PM – 8 PM)</option>
                 </select>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="contactAmount">Loan Amount Required</label>
-                <input type="text" id="contactAmount" placeholder="e.g. 50,00,000">
+              <div class="re-otp-section" id="otpSection" style="display:none;">
+                <label>Enter OTP (sent to mobile)</label>
+                <div class="re-otp-row">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                </div>
               </div>
-              <div class="form-field">
-                <label for="contactCity">City</label>
-                <input type="text" id="contactCity" placeholder="Enter your city">
+              <div class="re-form-row">
+                <button type="button" class="re-btn re-btn-outline" onclick="nextStep(2)">← Back</button>
+                <button type="button" class="re-btn re-btn-accent" onclick="submitListing()">
+                  🏠 Submit Listing
+                </button>
               </div>
             </div>
-            <div class="form-field full-width">
-              <label for="contactMessage">Additional Message</label>
-              <textarea id="contactMessage" rows="3" placeholder="Any additional details about your loan requirement..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">
-              Submit Enquiry
-            </button>
           </form>
-        </div>
 
-        <div class="contact-info">
-          <div class="contact-info-card">
-            <div class="contact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-              </svg>
-            </div>
-            <div>
-              <h4>Call Us</h4>
-              <a href="tel:+919876543210">+91 98765 43210</a>
-            </div>
-          </div>
-
-          <div class="contact-info-card whatsapp-card" onclick="openWhatsApp()">
-            <div class="contact-icon whatsapp-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-            </div>
-            <div>
-              <h4>WhatsApp Us</h4>
-              <span>Chat with us instantly</span>
-            </div>
-          </div>
-
-          <div class="contact-info-card">
-            <div class="contact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </div>
-            <div>
-              <h4>Email Us</h4>
-              <a href="mailto:info@intellicafinancial.com">info@intellicafinancial.com</a>
-            </div>
-          </div>
-
-          <div class="contact-info-card">
-            <div class="contact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div>
-              <h4>Visit Us</h4>
-              <span>Mumbai, Maharashtra, India</span>
-            </div>
+          <!-- Success Message -->
+          <div class="re-form-success" id="formSuccess" style="display:none;">
+            <div class="re-success-icon">✓</div>
+            <h3>Property Listed Successfully!</h3>
+            <p>Your property is now live and visible to buyers. You'll receive leads directly on your mobile and email.</p>
+            <div class="re-success-ref">Reference ID: <strong id="refId"></strong></div>
+            <button class="re-btn re-btn-primary re-btn-sm" onclick="resetForm()">List Another Property</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <div class="footer-logo">
-            <div class="logo-mark">IF</div>
-            <div class="logo-text">
-              <span class="logo-name">Intellica</span>
-              <span class="logo-tagline">Financial Services</span>
-            </div>
-          </div>
-          <p>Your trusted partner for all loan needs. We connect you with the best financial products from leading banks in India.</p>
+  <!-- ===================== LOAN CTA ===================== -->
+  <section class="re-loan-cta">
+    <div class="re-container">
+      <div class="re-loan-cta-card">
+        <div class="re-loan-cta-content">
+          <h2>Need a Home Loan for Your Dream Property?</h2>
+          <p>Intellica Financial Services offers the best home loan rates with quick approvals. Get up to ₹10 Cr at competitive rates.</p>
         </div>
-        <div class="footer-links">
-          <h4>Our Services</h4>
-          <a href="#services">Home Loan</a>
-          <a href="#services">Loan Against Property</a>
-          <a href="#services">CGTMSE Loan</a>
-          <a href="#services">Business Loan</a>
-          <a href="#services">Personal Loan</a>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <a href="#home">Home</a>
-          <a href="#about">About Us</a>
-          <a href="#emi-calculator">EMI Calculator</a>
-          <a href="#contact">Contact Us</a>
-        </div>
-        <div class="footer-links">
-          <h4>Contact</h4>
-          <a href="tel:+919876543210">+91 98765 43210</a>
-          <a href="mailto:info@intellicafinancial.com">info@intellicafinancial.com</a>
-          <span>Mumbai, Maharashtra, India</span>
+        <div class="re-loan-cta-actions">
+          <a href="index.html#emi-calculator" class="re-btn re-btn-white">Calculate EMI</a>
+          <a href="index.html#contact" class="re-btn re-btn-accent">Get Loan Now</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Intellica Financial Services Pvt Ltd. All rights reserved.</p>
-        <p class="disclaimer">Disclaimer: Interest rates and loan terms displayed are indicative and subject to change. Final rates depend on individual profile assessment and bank policies. Intellica Financial Services Pvt Ltd acts as a loan advisory and processing partner and does not directly lend money.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="re-footer">
+    <div class="re-container">
+      <div class="re-footer-grid">
+        <div class="re-footer-brand">
+          <div class="re-logo">
+            <div class="re-logo-mark">PI</div>
+            <div class="re-logo-text">
+              <span class="re-logo-name">PropInsight</span>
+              <span class="re-logo-tagline">India Real Estate</span>
+            </div>
+          </div>
+          <p>India's most comprehensive real estate demand intelligence platform covering 28 cities.</p>
+          <p class="re-footer-note">Powered by <a href="index.html">Intellica Financial Services</a></p>
+        </div>
+        <div class="re-footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#demand-dashboard">Demand Map</a></li>
+            <li><a href="#price-trends">Price Trends</a></li>
+            <li><a href="#builders">Builder Profiles</a></li>
+            <li><a href="#listings">Properties</a></li>
+            <li><a href="#list-property">List Property</a></li>
+          </ul>
+        </div>
+        <div class="re-footer-col">
+          <h4>Top Cities</h4>
+          <ul>
+            <li><a href="#demand-dashboard">Delhi NCR</a></li>
+            <li><a href="#demand-dashboard">Mumbai</a></li>
+            <li><a href="#demand-dashboard">Noida</a></li>
+            <li><a href="#demand-dashboard">Chandigarh</a></li>
+            <li><a href="#demand-dashboard">Bangalore</a></li>
+            <li><a href="#demand-dashboard">Pune</a></li>
+          </ul>
+        </div>
+        <div class="re-footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">RERA Verification</a></li>
+            <li><a href="#">Stamp Duty Calculator</a></li>
+            <li><a href="index.html#emi-calculator">EMI Calculator</a></li>
+            <li><a href="#">Market Reports</a></li>
+            <li><a href="#">Vastu Guide</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="re-footer-bottom">
+        <p>© 2026 PropInsight India. All rights reserved. Powered by Intellica Financial Services Pvt Ltd.</p>
+        <p>Data is for informational purposes only. Verify all details independently before making investment decisions.</p>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
-  <div class="whatsapp-float" onclick="openWhatsApp()" title="Chat with us on WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-    <span class="whatsapp-tooltip">Chat with us</span>
-  </div>
+  <!-- Toast Notification -->
+  <div class="re-toast" id="reToast"></div>
 
-  <!-- Toast Container -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <!-- Scripts -->
-  <script src="js/app.js"></script>
+  <script src="js/realestate.js"></script>
 </body>
 </html>
