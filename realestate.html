@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PropInsight India – Real Estate Demand Dashboard | Builder Profiles | Property Listings</title>
+  <meta name="description" content="Explore real estate demand across Indian cities. View price trends, builder profiles with RERA compliance, and list your property for free.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js for demand visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Leaflet for interactive map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/realestate.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="re-header" id="reHeader">
+    <div class="re-container re-header-inner">
+      <a href="#hero" class="re-logo">
+        <div class="re-logo-mark">PI</div>
+        <div class="re-logo-text">
+          <span class="re-logo-name">PropInsight</span>
+          <span class="re-logo-tagline">India Real Estate</span>
+        </div>
+      </a>
+
+      <nav class="re-nav" id="reNav">
+        <a href="#demand-dashboard" class="re-nav-link">Demand Map</a>
+        <a href="#price-trends" class="re-nav-link">Price Trends</a>
+        <a href="#builders" class="re-nav-link">Builders</a>
+        <a href="#listings" class="re-nav-link">Properties</a>
+        <a href="#list-property" class="re-nav-link">List Property</a>
+      </nav>
+
+      <div class="re-header-actions">
+        <a href="#list-property" class="re-btn re-btn-primary re-btn-sm">+ List Your Property</a>
+        <button class="re-mobile-toggle" id="reMobileToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="re-hero" id="hero">
+    <div class="re-hero-bg">
+      <div class="re-hero-shape re-hero-shape-1"></div>
+      <div class="re-hero-shape re-hero-shape-2"></div>
+      <div class="re-hero-shape re-hero-shape-3"></div>
+      <div class="re-hero-grid"></div>
+    </div>
+    <div class="re-container re-hero-content">
+      <div class="re-hero-badge">
+        <span class="re-badge-dot"></span>
+        Live Demand Intelligence Across India
+      </div>
+      <h1 class="re-hero-title">
+        Find Where India's
+        <span class="re-gradient-text">Real Estate Demand</span>
+        Is Surging
+      </h1>
+      <p class="re-hero-subtitle">
+        Bird's-eye view of property demand, price ranges, verified builder profiles, and RERA compliance across Delhi, Noida, Mumbai, Chandigarh & 20+ cities.
+      </p>
+
+      <!-- Search Bar -->
+      <div class="re-search-bar">
+        <div class="re-search-field">
+          <svg class="re-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="heroSearch" placeholder="Search city, locality, builder..." class="re-search-input" autocomplete="off">
+          <div class="re-search-suggestions" id="searchSuggestions"></div>
+        </div>
+        <select class="re-search-select" id="heroPropertyType">
+          <option value="">Property Type</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+          <option>Plot</option>
+          <option>Commercial</option>
+          <option>Builder Floor</option>
+        </select>
+        <select class="re-search-select" id="heroBudget">
+          <option value="">Budget Range</option>
+          <option>Under ₹30L</option>
+          <option>₹30L – ₹60L</option>
+          <option>₹60L – ₹1Cr</option>
+          <option>₹1Cr – ₹2Cr</option>
+          <option>₹2Cr – ₹5Cr</option>
+          <option>Above ₹5Cr</option>
+        </select>
+        <button class="re-btn re-btn-accent re-search-btn" onclick="triggerSearch()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Search
+        </button>
+      </div>
+
+      <!-- Hero Stats -->
+      <div class="re-hero-stats">
+        <div class="re-stat-chip">
+          <strong>2,40,000+</strong>
+          <span>Active Listings</span>
+        </div>
+        <div class="re-stat-chip">
+          <strong>850+</strong>
+          <span>Verified Builders</span>
+        </div>
+        <div class="re-stat-chip">
+          <strong>28</strong>
+          <span>Cities Covered</span>
+        </div>
+        <div class="re-stat-chip">
+          <strong>98%</strong>
+          <span>RERA Verified</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DEMAND DASHBOARD ===================== -->
+  <section class="re-section" id="demand-dashboard">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Eagle-Eye Demand View</div>
+        <h2 class="re-section-title">Real Estate Demand Heatmap</h2>
+        <p class="re-section-subtitle">Live demand index across major Indian cities. Higher score = higher buyer activity & appreciation potential.</p>
+      </div>
+
+      <!-- City Filter Tabs -->
+      <div class="re-city-tabs" id="cityTabs">
+        <button class="re-city-tab active" data-city="all">All Cities</button>
+        <button class="re-city-tab" data-city="delhi">Delhi NCR</button>
+        <button class="re-city-tab" data-city="mumbai">Mumbai</button>
+        <button class="re-city-tab" data-city="noida">Noida</button>
+        <button class="re-city-tab" data-city="chandigarh">Chandigarh</button>
+        <button class="re-city-tab" data-city="bangalore">Bangalore</button>
+        <button class="re-city-tab" data-city="pune">Pune</button>
+        <button class="re-city-tab" data-city="hyderabad">Hyderabad</button>
+      </div>
+
+      <div class="re-dashboard-grid">
+        <!-- Left: Interactive Map -->
+        <div class="re-card re-map-card">
+          <div class="re-card-header">
+            <h3>India Demand Map</h3>
+            <div class="re-map-legend">
+              <span class="re-legend-dot" style="background:#ef4444"></span> Very High
+              <span class="re-legend-dot" style="background:#f97316"></span> High
+              <span class="re-legend-dot" style="background:#eab308"></span> Medium
+              <span class="re-legend-dot" style="background:#22c55e"></span> Growing
+            </div>
+          </div>
+          <div id="indiaMap" class="re-map-container"></div>
+        </div>
+
+        <!-- Right: Demand Cards -->
+        <div class="re-demand-cards" id="demandCards">
+          <!-- JS populated -->
+        </div>
+      </div>
+
+      <!-- Demand Bar Chart -->
+      <div class="re-card re-chart-card">
+        <div class="re-card-header">
+          <h3>City-wise Demand Index (Q1 2026)</h3>
+          <div class="re-chart-toggles">
+            <button class="re-toggle-btn active" data-chart="demand">Demand</button>
+            <button class="re-toggle-btn" data-chart="price">Avg Price/sqft</button>
+            <button class="re-toggle-btn" data-chart="supply">New Supply</button>
+          </div>
+        </div>
+        <canvas id="demandChart" height="100"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICE TRENDS ===================== -->
+  <section class="re-section re-section-alt" id="price-trends">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Market Intelligence</div>
+        <h2 class="re-section-title">City-wise Price Ranges & Trends</h2>
+        <p class="re-section-subtitle">Avg price per sq.ft, YoY appreciation, and micro-market breakdown.</p>
+      </div>
+
+      <!-- City Price Cards Grid -->
+      <div class="re-price-grid" id="priceGrid">
+        <!-- JS populated -->
+      </div>
+
+      <!-- Price Trend Line Chart -->
+      <div class="re-card re-trend-card">
+        <div class="re-card-header">
+          <h3>12-Month Price Appreciation Trend</h3>
+          <select class="re-select-sm" id="trendCitySelect">
+            <option value="delhi">Delhi NCR</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="noida">Noida</option>
+            <option value="chandigarh">Chandigarh</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="pune">Pune</option>
+          </select>
+        </div>
+        <canvas id="trendChart" height="80"></canvas>
+      </div>
+
+      <!-- Locality Deep Dive -->
+      <div class="re-card">
+        <div class="re-card-header">
+          <h3>Micro-Market Price Breakdown</h3>
+          <select class="re-select-sm" id="localityCity">
+            <option value="delhi">Delhi NCR</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="noida">Noida</option>
+            <option value="chandigarh">Chandigarh</option>
+          </select>
+        </div>
+        <div class="re-locality-table-wrap">
+          <table class="re-locality-table" id="localityTable">
+            <thead>
+              <tr>
+                <th>Locality / Sector</th>
+                <th>Avg ₹/sqft</th>
+                <th>Price Range</th>
+                <th>YoY Growth</th>
+                <th>Demand Score</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody id="localityTableBody">
+              <!-- JS populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BUILDERS ===================== -->
+  <section class="re-section" id="builders">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Developer Intelligence</div>
+        <h2 class="re-section-title">Verified Builder Profiles</h2>
+        <p class="re-section-subtitle">Complete master data — projects delivered, RERA status, authority approvals, and buyer demand ratings.</p>
+      </div>
+
+      <!-- Builder Filter -->
+      <div class="re-filter-bar">
+        <input type="text" id="builderSearch" placeholder="Search builder name..." class="re-filter-input">
+        <select class="re-filter-select" id="builderCityFilter">
+          <option value="">All Cities</option>
+          <option>Delhi NCR</option>
+          <option>Mumbai</option>
+          <option>Noida</option>
+          <option>Chandigarh</option>
+          <option>Bangalore</option>
+          <option>Pune</option>
+          <option>Hyderabad</option>
+        </select>
+        <select class="re-filter-select" id="builderReraFilter">
+          <option value="">RERA Status</option>
+          <option value="verified">RERA Verified</option>
+          <option value="pending">Pending</option>
+        </select>
+        <select class="re-filter-select" id="builderRatingFilter">
+          <option value="">Rating</option>
+          <option value="5">5 Star</option>
+          <option value="4">4+ Star</option>
+          <option value="3">3+ Star</option>
+        </select>
+      </div>
+
+      <!-- Builder Cards Grid -->
+      <div class="re-builders-grid" id="buildersGrid">
+        <!-- JS populated -->
+      </div>
+
+      <!-- Builder Modal -->
+      <div class="re-modal-overlay" id="builderModal">
+        <div class="re-modal">
+          <button class="re-modal-close" onclick="closeBuilderModal()">✕</button>
+          <div id="builderModalContent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROPERTY LISTINGS ===================== -->
+  <section class="re-section re-section-alt" id="listings">
+    <div class="re-container">
+      <div class="re-section-header">
+        <div class="re-section-tag">Live Listings</div>
+        <h2 class="re-section-title">Available Properties</h2>
+        <p class="re-section-subtitle">Browse verified properties from owners and builders.</p>
+      </div>
+
+      <!-- Listing Filters -->
+      <div class="re-listing-filters">
+        <div class="re-filter-tabs" id="listingTypeTabs">
+          <button class="re-filter-tab active" data-type="all">All</button>
+          <button class="re-filter-tab" data-type="buy">Buy</button>
+          <button class="re-filter-tab" data-type="rent">Rent</button>
+          <button class="re-filter-tab" data-type="new">New Projects</button>
+        </div>
+        <div class="re-listing-filter-row">
+          <select class="re-filter-select" id="listingCity">
+            <option value="">All Cities</option>
+            <option>Delhi NCR</option>
+            <option>Mumbai</option>
+            <option>Noida</option>
+            <option>Chandigarh</option>
+            <option>Bangalore</option>
+            <option>Pune</option>
+          </select>
+          <select class="re-filter-select" id="listingType">
+            <option value="">Property Type</option>
+            <option>Apartment</option>
+            <option>Villa</option>
+            <option>Plot</option>
+            <option>Commercial</option>
+            <option>Builder Floor</option>
+            <option>Penthouse</option>
+          </select>
+          <select class="re-filter-select" id="listingBhk">
+            <option value="">BHK</option>
+            <option>1 BHK</option>
+            <option>2 BHK</option>
+            <option>3 BHK</option>
+            <option>4 BHK</option>
+            <option>5+ BHK</option>
+          </select>
+          <select class="re-filter-select" id="listingBudget">
+            <option value="">Budget</option>
+            <option>Under ₹30L</option>
+            <option>₹30L – ₹60L</option>
+            <option>₹60L – ₹1Cr</option>
+            <option>₹1Cr – ₹2Cr</option>
+            <option>₹2Cr – ₹5Cr</option>
+            <option>Above ₹5Cr</option>
+          </select>
+          <button class="re-btn re-btn-primary re-btn-sm" onclick="filterListings()">Apply Filters</button>
+        </div>
+      </div>
+
+      <!-- Listings Grid -->
+      <div class="re-listings-grid" id="listingsGrid">
+        <!-- JS populated -->
+      </div>
+
+      <div class="re-load-more-wrap">
+        <button class="re-btn re-btn-outline" id="loadMoreBtn" onclick="loadMoreListings()">Load More Properties</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LIST YOUR PROPERTY ===================== -->
+  <section class="re-section re-list-section" id="list-property">
+    <div class="re-container">
+      <div class="re-list-grid">
+        <!-- Left Info -->
+        <div class="re-list-info">
+          <div class="re-section-tag">For Owners & Builders</div>
+          <h2 class="re-section-title re-left">List Your Property — It's Free</h2>
+          <p class="re-list-desc">Reach lakhs of verified buyers across India. Get leads directly to your phone and email.</p>
+          <ul class="re-list-benefits">
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              </div>
+              <div>
+                <strong>Direct Buyer Leads</strong>
+                <span>Calls and enquiries direct to your number</span>
+              </div>
+            </li>
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <strong>RERA Badge Display</strong>
+                <span>Show your RERA registration prominently</span>
+              </div>
+            </li>
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <div>
+                <strong>Demand Analytics</strong>
+                <span>See how your listing compares to market demand</span>
+              </div>
+            </li>
+            <li>
+              <div class="re-benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <strong>24/7 Visibility</strong>
+                <span>Your property listed across all platforms</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Form -->
+        <div class="re-card re-list-form-card">
+          <h3 class="re-form-title">Post Your Property</h3>
+
+          <!-- Progress Steps -->
+          <div class="re-form-steps">
+            <div class="re-form-step active" id="step-indicator-1">
+              <div class="re-step-num">1</div>
+              <span>Basic Info</span>
+            </div>
+            <div class="re-step-line"></div>
+            <div class="re-form-step" id="step-indicator-2">
+              <div class="re-step-num">2</div>
+              <span>Details</span>
+            </div>
+            <div class="re-step-line"></div>
+            <div class="re-form-step" id="step-indicator-3">
+              <div class="re-step-num">3</div>
+              <span>Contact</span>
+            </div>
+          </div>
+
+          <form id="listPropertyForm" novalidate>
+            <!-- Step 1 -->
+            <div class="re-form-step-panel active" id="formStep1">
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Listing Type *</label>
+                  <div class="re-radio-group">
+                    <label class="re-radio-label"><input type="radio" name="listingType" value="sell" checked> Sell</label>
+                    <label class="re-radio-label"><input type="radio" name="listingType" value="rent"> Rent</label>
+                    <label class="re-radio-label"><input type="radio" name="listingType" value="pg"> PG/Co-living</label>
+                  </div>
+                </div>
+                <div class="re-form-group">
+                  <label>Property Type *</label>
+                  <select class="re-form-input" id="fp_propertyType" required>
+                    <option value="">Select</option>
+                    <option>Apartment / Flat</option>
+                    <option>Independent House</option>
+                    <option>Villa</option>
+                    <option>Builder Floor</option>
+                    <option>Plot / Land</option>
+                    <option>Commercial Office</option>
+                    <option>Shop / Showroom</option>
+                    <option>Warehouse</option>
+                  </select>
+                </div>
+              </div>
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>City *</label>
+                  <select class="re-form-input" id="fp_city" required>
+                    <option value="">Select City</option>
+                    <option>Delhi</option>
+                    <option>Noida</option>
+                    <option>Greater Noida</option>
+                    <option>Gurgaon</option>
+                    <option>Faridabad</option>
+                    <option>Ghaziabad</option>
+                    <option>Mumbai</option>
+                    <option>Navi Mumbai</option>
+                    <option>Thane</option>
+                    <option>Pune</option>
+                    <option>Chandigarh</option>
+                    <option>Mohali</option>
+                    <option>Panchkula</option>
+                    <option>Bangalore</option>
+                    <option>Hyderabad</option>
+                    <option>Chennai</option>
+                    <option>Ahmedabad</option>
+                    <option>Kolkata</option>
+                    <option>Jaipur</option>
+                    <option>Lucknow</option>
+                  </select>
+                </div>
+                <div class="re-form-group">
+                  <label>Locality / Sector *</label>
+                  <input type="text" class="re-form-input" id="fp_locality" placeholder="e.g. Sector 62, Dwarka" required>
+                </div>
+              </div>
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>BHK / Configuration *</label>
+                  <select class="re-form-input" id="fp_bhk">
+                    <option>1 BHK</option>
+                    <option>2 BHK</option>
+                    <option>3 BHK</option>
+                    <option>4 BHK</option>
+                    <option>5 BHK</option>
+                    <option>Studio</option>
+                    <option>N/A (Plot/Commercial)</option>
+                  </select>
+                </div>
+                <div class="re-form-group">
+                  <label>Built-up Area (sq.ft) *</label>
+                  <input type="number" class="re-form-input" id="fp_area" placeholder="e.g. 1200" required>
+                </div>
+              </div>
+              <button type="button" class="re-btn re-btn-primary re-btn-full" onclick="nextStep(2)">Continue →</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="re-form-step-panel" id="formStep2">
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Expected Price *</label>
+                  <input type="text" class="re-form-input" id="fp_price" placeholder="e.g. ₹85,00,000" required>
+                </div>
+                <div class="re-form-group">
+                  <label>Price Negotiable?</label>
+                  <div class="re-radio-group">
+                    <label class="re-radio-label"><input type="radio" name="negotiable" value="yes" checked> Yes</label>
+                    <label class="re-radio-label"><input type="radio" name="negotiable" value="no"> No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Floor Number</label>
+                  <input type="text" class="re-form-input" id="fp_floor" placeholder="e.g. 5th of 15">
+                </div>
+                <div class="re-form-group">
+                  <label>Age of Property</label>
+                  <select class="re-form-input" id="fp_age">
+                    <option>Under Construction</option>
+                    <option>New (0–1 year)</option>
+                    <option>1–5 years</option>
+                    <option>5–10 years</option>
+                    <option>10+ years</option>
+                  </select>
+                </div>
+              </div>
+              <div class="re-form-group">
+                <label>Key Amenities</label>
+                <div class="re-checkbox-grid">
+                  <label class="re-checkbox-label"><input type="checkbox" value="parking"> Parking</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="gym"> Gym</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="pool"> Swimming Pool</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="security"> 24/7 Security</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="club"> Club House</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="lift"> Lift</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="garden"> Garden</label>
+                  <label class="re-checkbox-label"><input type="checkbox" value="powerbackup"> Power Backup</label>
+                </div>
+              </div>
+              <div class="re-form-group">
+                <label>RERA Registration Number (if applicable)</label>
+                <input type="text" class="re-form-input" id="fp_rera" placeholder="e.g. UPRERAPRJ123456">
+              </div>
+              <div class="re-form-group">
+                <label>Property Description</label>
+                <textarea class="re-form-input re-form-textarea" id="fp_desc" placeholder="Describe your property, nearby landmarks, highlights..."></textarea>
+              </div>
+              <div class="re-form-row">
+                <button type="button" class="re-btn re-btn-outline" onclick="nextStep(1)">← Back</button>
+                <button type="button" class="re-btn re-btn-primary" onclick="nextStep(3)">Continue →</button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="re-form-step-panel" id="formStep3">
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Your Name *</label>
+                  <input type="text" class="re-form-input" id="fp_name" placeholder="Full Name" required>
+                </div>
+                <div class="re-form-group">
+                  <label>Role *</label>
+                  <select class="re-form-input" id="fp_role">
+                    <option>Owner</option>
+                    <option>Builder / Developer</option>
+                    <option>Agent / Broker</option>
+                  </select>
+                </div>
+              </div>
+              <div class="re-form-row">
+                <div class="re-form-group">
+                  <label>Mobile Number *</label>
+                  <input type="tel" class="re-form-input" id="fp_mobile" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="re-form-group">
+                  <label>Email Address *</label>
+                  <input type="email" class="re-form-input" id="fp_email" placeholder="you@email.com" required>
+                </div>
+              </div>
+              <div class="re-form-group">
+                <label>Preferred Contact Time</label>
+                <select class="re-form-input" id="fp_contactTime">
+                  <option>Any Time</option>
+                  <option>Morning (9 AM – 12 PM)</option>
+                  <option>Afternoon (12 PM – 4 PM)</option>
+                  <option>Evening (4 PM – 8 PM)</option>
+                </select>
+              </div>
+              <div class="re-otp-section" id="otpSection" style="display:none;">
+                <label>Enter OTP (sent to mobile)</label>
+                <div class="re-otp-row">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                  <input type="text" class="re-form-input re-otp-input" maxlength="1">
+                </div>
+              </div>
+              <div class="re-form-row">
+                <button type="button" class="re-btn re-btn-outline" onclick="nextStep(2)">← Back</button>
+                <button type="button" class="re-btn re-btn-accent" onclick="submitListing()">
+                  🏠 Submit Listing
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Success Message -->
+          <div class="re-form-success" id="formSuccess" style="display:none;">
+            <div class="re-success-icon">✓</div>
+            <h3>Property Listed Successfully!</h3>
+            <p>Your property is now live and visible to buyers. You'll receive leads directly on your mobile and email.</p>
+            <div class="re-success-ref">Reference ID: <strong id="refId"></strong></div>
+            <button class="re-btn re-btn-primary re-btn-sm" onclick="resetForm()">List Another Property</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOAN CTA ===================== -->
+  <section class="re-loan-cta">
+    <div class="re-container">
+      <div class="re-loan-cta-card">
+        <div class="re-loan-cta-content">
+          <h2>Need a Home Loan for Your Dream Property?</h2>
+          <p>Intellica Financial Services offers the best home loan rates with quick approvals. Get up to ₹10 Cr at competitive rates.</p>
+        </div>
+        <div class="re-loan-cta-actions">
+          <a href="index.html#emi-calculator" class="re-btn re-btn-white">Calculate EMI</a>
+          <a href="index.html#contact" class="re-btn re-btn-accent">Get Loan Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="re-footer">
+    <div class="re-container">
+      <div class="re-footer-grid">
+        <div class="re-footer-brand">
+          <div class="re-logo">
+            <div class="re-logo-mark">PI</div>
+            <div class="re-logo-text">
+              <span class="re-logo-name">PropInsight</span>
+              <span class="re-logo-tagline">India Real Estate</span>
+            </div>
+          </div>
+          <p>India's most comprehensive real estate demand intelligence platform covering 28 cities.</p>
+          <p class="re-footer-note">Powered by <a href="index.html">Intellica Financial Services</a></p>
+        </div>
+        <div class="re-footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#demand-dashboard">Demand Map</a></li>
+            <li><a href="#price-trends">Price Trends</a></li>
+            <li><a href="#builders">Builder Profiles</a></li>
+            <li><a href="#listings">Properties</a></li>
+            <li><a href="#list-property">List Property</a></li>
+          </ul>
+        </div>
+        <div class="re-footer-col">
+          <h4>Top Cities</h4>
+          <ul>
+            <li><a href="#demand-dashboard">Delhi NCR</a></li>
+            <li><a href="#demand-dashboard">Mumbai</a></li>
+            <li><a href="#demand-dashboard">Noida</a></li>
+            <li><a href="#demand-dashboard">Chandigarh</a></li>
+            <li><a href="#demand-dashboard">Bangalore</a></li>
+            <li><a href="#demand-dashboard">Pune</a></li>
+          </ul>
+        </div>
+        <div class="re-footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">RERA Verification</a></li>
+            <li><a href="#">Stamp Duty Calculator</a></li>
+            <li><a href="index.html#emi-calculator">EMI Calculator</a></li>
+            <li><a href="#">Market Reports</a></li>
+            <li><a href="#">Vastu Guide</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="re-footer-bottom">
+        <p>© 2026 PropInsight India. All rights reserved. Powered by Intellica Financial Services Pvt Ltd.</p>
+        <p>Data is for informational purposes only. Verify all details independently before making investment decisions.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="re-toast" id="reToast"></div>
+
+  <script src="js/realestate.js"></script>
+</body>
+</html>
