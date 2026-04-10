@@ -6,7 +6,7 @@
 // ============================================
 // WhatsApp Configuration
 // ============================================
-const WHATSAPP_NUMBER = '919876543210'; // Replace with actual number
+const WHATSAPP_NUMBER = '919217093900';
 const WHATSAPP_MESSAGE = 'Hi Intellica Financial Services! I am interested in learning more about your loan services. Please help me with the best loan options.';
 
 function openWhatsApp() {
